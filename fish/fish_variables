@@ -1,0 +1,13 @@
+# This file contains fish universal variable definitions.
+# VERSION: 3.0
+SETUVAR --export FZF_DEFAULT_OPTS:\x0a\x2d\x2dstyle\x20full\x20\x2d\x2dpreview\x20\x27fzf\x2dpreview\x2esh\x20\x7b\x7d\x27\x20\x2d\x2dbind\x20\x27focus\x3atransform\x2dheader\x3afile\x20\x2d\x2dbrief\x20\x7b\x7d\x27\x20\x2d\x2dborder\x3drounded\x20\x2d\x2dlayout\x3dreverse\x2dlist\x20\x2d\x2dinfo\x3dright\x20\x2d\x2dseparator\x3d\u2500\u2500\x20\x2d\x2dinput\x2dlabel\x2dpos\x3d1\x20\x2d\x2dcolor\x3ddark\x2cpointer\x3a\x2399c1f1\x20
+SETUVAR --export SSH_AGENT_PID:2005
+SETUVAR --export SSH_AUTH_SOCK:/tmp/ssh\x2dl0bUVe5NPi7e/agent\x2e2004
+SETUVAR __fish_initialized:3400
+SETUVAR fish_autosuggestion_enabled:1
+SETUVAR fish_color_selection:\x2d\x2dbackground\x3dbrblack\x1e\x2d\x2dforeground\x3dred
+SETUVAR fish_cursor_default:block
+SETUVAR fish_cursor_insert:line
+SETUVAR fish_cursor_replace_one:underscore
+SETUVAR fish_cursor_visual:block
+SETUVAR fish_key_bindings:fish_vi_key_bindings
