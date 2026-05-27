@@ -34,7 +34,7 @@ if [ -z "$TMUX" ] && [ -n "$PS1" ]; then
 fi
 
 # yazi
-f() {
+fm() {
   local tmp="$(mktemp -t yazi-cwd.XXXXXX)"
   yazi "$@" --cwd-file="$tmp"
   if [ -f "$tmp" ]; then
@@ -47,3 +47,5 @@ f() {
 
 # broot
 # alias br="broot"
+
+# i'm adding this comment to confirm some detail
