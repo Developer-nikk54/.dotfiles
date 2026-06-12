@@ -126,10 +126,12 @@ keymap = [
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go ~/.config" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go ~/Downloads" },
+	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go .config" },
+	{ on = [ "g", "e" ],       run = "cd ~/.dotfiles",             desc = "Go .dotfiles" },
+	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go Downloads" },
+  { on = [ "g", "t" ],       run = "cd ~/.local/share/Trash",             desc = "Go trash" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
-	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow hovered symlink" },
+	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow symlink" },
 
 	# Tabs
 	{ on = [ "t", "t" ], run = "tab_create --current",     desc = "Create a new tab in CWD" },
