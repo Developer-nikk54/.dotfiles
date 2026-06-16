@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+from pathlib import Path
+import sys
+
+print("\n=== Symlink Creator ===\n")
+
+source_input = input(
+    "Enter the source directory or file path:\n> "
+).strip()
+
+source = Path(source_input).expanduser().resolve()
+
+if not source.exists():
+    print(f"\n[ERROR] Source path does not exist:\n{source}")
+    sys.exit(1)
+
+target_input = input(
+    "\nEnter the destination path for the symlink:\n> "
+).strip()
+
+target = Path(target_input).expanduser()
+
+print("\n=== Summary ===")
+print(f"Source : {source}")
+print(f"Target : {target}")
+
+confirm = input(
+    "\nProceed with symlink creation? [y/N]: "
+).strip().lower()
+
+if confirm != "y":
+    print("\nOperation cancelled.")
+    sys.exit(0)
+
+if target.exists() or target.is_symlink():
+    overwrite = input(
+        f"\n[WARNING] The target already exists:\n"
+        f"{target}\n\n"
+        f"Overwrite it? [y/N]: "
+    ).strip().lower()
+
+    if overwrite != "y":
+        print("\nOperation cancelled.")
+        sys.exit(0)
+
+    if target.is_dir() and not target.is_symlink():
+        print(
+            "\n[ERROR] The target is a real directory.\n"
+            "Please remove it manually before continuing."
+        )
+        sys.exit(1)
+
+    target.unlink()
+
+target.parent.mkdir(parents=True, exist_ok=True)
+target.symlink_to(source)
+
+print("\n[SUCCESS] Symlink created successfully.")
+print(f"{target} -> {source}")

@@ -9,8 +9,8 @@ return {
         width = 0.9,
       },
       filetype = {
-        c = "cd $dir && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
-        cpp = "cd $dir && g++ $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        c = "cd $dir && clear && gcc $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
+        cpp = "cd $dir && clear && g++ $fileName -o $fileNameWithoutExt && ./$fileNameWithoutExt",
         python = "python3 $fileName",
         javascript = "node $fileName",
       },

@@ -10,7 +10,6 @@ set -U fish_cursor_replace_one underscore
 set -U fish_cursor_visual block
 set -U fish_color_selection --background=brblack --foreground=red
 
-
 # tmux
 function tmux-start
     tmux new-session -A -s main
@@ -19,7 +18,6 @@ end
 if not set -q TMUX; and status is-interactive
     tmux-start
 end
-
 
 # -------------------------------------------------
 # default editor

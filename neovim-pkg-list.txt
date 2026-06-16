@@ -1,0 +1,13 @@
+neovim all downloaded packages/lsp list :
+
+Lazy packages : see using Lazy command
+
+
+Mason (LSP) packages : see using Mason command
+  clangd  (for c/c++)
+  prettier    (code formatter)
+
+
+Terminal additional packages :
+  clang++ (for clangd integration)
+

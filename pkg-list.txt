@@ -1,0 +1,23 @@
+all over packages cross platform :
+
+eza   (alternate of ls command)
+zoxide    (alternate of cd command)
+fzf   (interactive file search)
+bat   (alternate of cat command)
+starship    (starship prompt)
+yazi    (cli file-manager)
+fish    (fish shell)
+tmux    (terminal multiplexer)
+btop    (cli process monitor)
+chafa   (image rendering in terminal)
+fastfetch   (fetch system information)
+neovim    (cli text editor)
+
+(gui apps)
+ghostty   (terminal emulater)
+zen     (zen browser)
+
+(packages to install if needed otherwise no install these)
+fd    (alternate of find command)
+wl-clipboard    (clipboard integrate for neovim,ghostty,etc)
+keychain    (for github ssh autologin)

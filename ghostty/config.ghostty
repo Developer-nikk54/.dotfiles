@@ -1,6 +1,6 @@
 custom-shader = shaders/cursor_smear.glsl
-window-decoration = none
-theme = Aizen Dark
+# window-decoration = none
+theme = Adwaita Dark
 # background-opacity = 0.45
 foreground = #BFC9D1
 font-size = 16
@@ -17,6 +17,8 @@ tab-inherit-working-directory = true
 split-inherit-working-directory = true
 window-padding-y = 1
 window-padding-x = 15
+window-height = 29
+window-width = 129
 window-padding-color = extend
 title = " "
 shell-integration-features = cursor

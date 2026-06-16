@@ -10,6 +10,7 @@ function fm
 
         if test -n "$cwd"
             cd "$cwd"
+            ls
         end
 
         rm -f "$tmp"

@@ -1,5 +1,4 @@
-# cd using zoxide and then list directory
+# cd using zoxide
 function cd
     z $argv
-    ls
 end

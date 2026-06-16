@@ -1,0 +1,31 @@
+# zen browser shortcuts etc.
+
+search bar = ctrl+l
+search via google = ctrl+j
+copy url = ctrl+shift+c
+toggle sidebar = alt+s
+new tab = ctrl+t
+last close tab = ctrl+shift+t
+
+next = alt+rightArrow or ctrl+]
+previous = alt+leftArrow or ctrl+[
+scroll up = space
+scroll down = shift+space
+
+history = ctrl+h
+bookmarks = ctrl+b
+
+split window :
+  split horizontal = ctrl+alt+h
+  split vertical = ctrl+alt+v
+  switch split = (switch using tab switch key like Tab or alt+1,2,3)
+  close split = ctrl+alt+u
+
+workspace switch :
+  next workspace = ctrl+alt+k
+  previous workspace = ctrl+alt+j
+  workspace 1 = ctrl+1
+  workspace 2 = ctrl+2
+  workspace 3 = ctrl+3
+  workspace 4 = ctrl+4
+  workspace 5 = ctrl+5
