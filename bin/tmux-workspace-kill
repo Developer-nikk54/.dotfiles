@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+MAIN_SESSION="main"
+
+CURRENT_SESSION=$(tmux display-message -p '#S')
+
+# main session ko kabhi kill mat karo
+if [ "$CURRENT_SESSION" = "$MAIN_SESSION" ]; then
+    exit 0
+fi
+
+# pehle main session me switch karo
+tmux switch-client -t "$MAIN_SESSION"
+
+# phir current session kill karo
+tmux kill-session -t "$CURRENT_SESSION"

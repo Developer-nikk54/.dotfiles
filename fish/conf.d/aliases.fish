@@ -6,13 +6,14 @@ alias myfetch "fastfetch --config ~/.config/fastfetch/custom.jsonc"
 alias fullfetch "fastfetch --config ~/.config/fastfetch/all.jsonc"
 alias vi vim.tiny
 alias ni nvim
-alias ls "eza -l --icons"
-alias la "eza -la --icons"
-alias tree "eza -la --tree --icons"
-alias cat bat
+alias ls "eza --icons"
+alias la "eza -a --icons"
+alias ll "eza -la --icons"
+alias tree "eza -a --tree --icons"
 # alias do "cd (zoxide query -l "" | fzf)"
+alias cls clear
 alias conf "cd ~/.config"
-alias ttype "toipe -n 50"
+alias edit "cd ~/.dotfiles"
 
 # alias for python
 alias python python3

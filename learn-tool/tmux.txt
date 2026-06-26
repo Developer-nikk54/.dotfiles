@@ -1,0 +1,23 @@
+# tmux shorctus :
+
+# daily use manage split-pane/window
+  mouse = right click 
+  split hr = prefix => "
+  split vr = prefix => %
+  reload tmux = prefix => r
+  window overview = prefix => w
+  switch window = prefix => alt+1,2,3....
+  rename window = prefix => ,
+
+# tmux session manage
+  create new session = prefix => N
+  close current active session = prefix => q
+  session overview = prefix => s
+  switch session = prefix => ( )
+  rename session = prefix => $
+
+# others keybind
+  see tmux keybind = prefix => ?
+
+# tmux command mode
+ learn from website = https://tmuxcheatsheet.com/

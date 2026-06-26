@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+num=1
+
+while tmux has-session -t "workspace$num" 2>/dev/null
+do
+    ((num++))
+done
+
+tmux new-session -d -s "workspace$num"
+tmux switch-client -t "workspace$num"

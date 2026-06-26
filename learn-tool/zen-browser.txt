@@ -1,4 +1,4 @@
-# zen browser shortcuts etc.
+# zen browser shortcuts, zen-mods, extentions.
 
 search bar = ctrl+l
 search via google = ctrl+j
@@ -29,3 +29,4 @@ workspace switch :
   workspace 3 = ctrl+3
   workspace 4 = ctrl+4
   workspace 5 = ctrl+5
+

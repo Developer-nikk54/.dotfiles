@@ -1,4 +1,5 @@
 all over packages cross platform :
+additional package manager cross platform : [brew, flatpak]
 
 eza   (alternate of ls command)
 zoxide    (alternate of cd command)
@@ -21,3 +22,15 @@ zen     (zen browser)
 fd    (alternate of find command)
 wl-clipboard    (clipboard integrate for neovim,ghostty,etc)
 keychain    (for github ssh autologin)
+duf     (alternate of df used for storage disk check)
+lazyjournal     (log view/read)
+
+
+Linux type based packages :
+RedHat (fedora etc) :
+
+
+Ubuntu (Pop!_OS etc) :
+
+
+Arch :

@@ -142,7 +142,7 @@
 # # ✅ DOCKER FIX
 # # -------------------------
 # [docker_context]
-# symbol = ""
+# symbol = " "
 # style = "bg:surface0"
 # format = '[[ $symbol( $context) ](fg:blue bg:surface0)]($style)'
 #
@@ -184,6 +184,7 @@ $bun\
 $rust\
 $golang\
 $php\
+$docker_context\
 [](fg:#212736 bg:#1d2230)\
 [ ](fg:#1d2230)\
 \n\n$character"""
@@ -234,6 +235,15 @@ symbol = ""
 style = "bg:#212736"
 format = '[[ $symbol ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
+[c]
+symbol = ""
+style = "bg:teal"
+format = '[[ $symbol( $version) ](fg:#769ff0 bg:#212736)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:surface0"
+format = '[[ $symbol( $context) ](fg:#769ff0 bg:#212736)]($style)'
 
 [character]
 disabled = false
