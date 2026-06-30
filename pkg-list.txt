@@ -13,6 +13,7 @@ btop    (cli process monitor)
 chafa   (image rendering in terminal)
 fastfetch   (fetch system information)
 neovim    (cli text editor)
+docker    (for development)
 
 (gui apps)
 ghostty   (terminal emulater)

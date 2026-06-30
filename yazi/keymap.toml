@@ -125,14 +125,16 @@ keymap = [
 	{ on = [ ",", "r" ], run = "sort random --reverse=no",                       desc = "Sort randomly" },
 
 	# Goto
-	{ on = [ "g", "h" ],       run = "cd ~",             desc = "Go home ~" },
-	{ on = [ "g", "r" ],       run = "cd /",             desc = "Go root /" },
-	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = "Go .config" },
-	{ on = [ "g", "e" ],       run = "cd ~/.dotfiles",             desc = "Go .dotfiles" },
-	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Go Downloads" },
-  { on = [ "g", "t" ],       run = "cd ~/.local/share/Trash",             desc = "Go trash" },
+	{ on = [ "g", "h" ],       run = "cd ~",             desc = "home ~" },
+	{ on = [ "g", "r" ],       run = "cd /",             desc = "root /" },
+	{ on = [ "g", "c" ],       run = "cd ~/.config",     desc = ".config" },
+	{ on = [ "g", "e" ],       run = "cd ~/.dotfiles",             desc = ".dotfiles" },
+	{ on = [ "g", "d" ],       run = "cd ~/Downloads",   desc = "Downloads" },
+  { on = [ "g", "t" ],       run = "cd ~/.local/share/Trash",             desc = "trash" },
 	{ on = [ "g", "<Space>" ], run = "cd --interactive", desc = "Jump interactively" },
 	{ on = [ "g", "f" ],       run = "follow",           desc = "Follow symlink" },
+	{ on = [ "g", "1" ],       run = "cd ~/Projects",           desc = "Projects" },
+	{ on = [ "g", "0" ],       run = "cd ~/.dotfiles/learn-tool",           desc = "lear-tool" },
 
 	# Tabs
 	{ on = [ "t", "t" ], run = "tab_create --current",     desc = "Create a new tab in CWD" },

@@ -16,8 +16,24 @@
   switch session = prefix => ( )
   rename session = prefix => $
 
+# copy mode keybinds
+  copy mode enable = prefix => [
+  select text = space or V
+  copy text = Enter
+  paste text = prefix => ]
+  search (down/up) = ? or /
+  jump (forward/backward) = (f/F) or (t/T)
+
 # others keybind
   see tmux keybind = prefix => ?
+  attach pop-up terminal = prefix => ctrl-p
+  detach pop-up terminal = prefix => d
 
 # tmux command mode
- learn from website = https://tmuxcheatsheet.com/
+ learn commands from website = https://tmuxcheatsheet.com/
+
+ "press tab for suggesstion of related keyword commands"
+
+ useful commands:{
+  clear history = clear-history
+  }

@@ -1,0 +1,15 @@
+# keybinds
+search = s
+find = / or ?
+select all = S -> b
+delete mode options = d
+goto mode options = g
+fold mode options = z
+change mode options = c
+visual mode options = v
+indent (left/right) = < >
+
+# commands
+set nospell/spell = spell check onn/off
+set foldmethod=manual = manual code fold using visual mode keymap:zf/za
+set foldmethod=expr = automatic code fold keymap:za
