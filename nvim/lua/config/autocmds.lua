@@ -16,10 +16,10 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- change #include<13/iostream> to #include<iostream>
-vim.api.nvim_create_user_command("CppCode", function()
-  if vim.bo.filetype ~= "cpp" then
-    print("Not a C++ file")
-    return
-  end
-  vim.cmd([[%g/^#include/s/13\///g]])
-end, {})
+-- vim.api.nvim_create_user_command("CppCode", function()
+--   if vim.bo.filetype ~= "cpp" then
+--     print("Not a C++ file")
+--     return
+--   end
+--   vim.cmd([[%g/^#include/s/13\///g]])
+-- end, {})

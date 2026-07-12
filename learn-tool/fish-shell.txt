@@ -1,0 +1,10 @@
+# fish shell settings
+
+inserMode {
+
+}
+
+normalMode {
+  use vim keybind
+  prev/next command: [ ]
+}

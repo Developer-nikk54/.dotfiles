@@ -1,0 +1,193 @@
+/* ==========================================
+   GLOBAL STYLES & FONTS
+   ========================================== */
+* {
+  /* Font family: Apne system ka koi bhi Nerd Font yaha daalein */
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+  font-size: 14;
+  font-weight: bold;
+  /* Outline hatane ke liye */
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  /* margin-left: 3px; */
+  /* margin-right: 3px; */
+  padding: 0;
+}
+
+/* ==========================================
+   MAIN BAR STYLING
+   ========================================== */
+window#waybar {
+  /* Background color: Dark purplish tint (screenshot se match kiya hua) */
+  background: transparent;
+  color: #cdd6f4; /* Light pinkish-white text color */
+  /* Agar transparent bar chahiye to background-color ko is tarah likhein:
+       background-color: rgba(15, 12, 22, 0.85); */
+}
+
+/* Tooltip (Hover karne par jo text aata hai) ka style */
+tooltip {
+  background: #1f1f1f;
+  border: 1px solid #8caaee;
+  border-radius: 20px;
+  outline: none;
+}
+
+tooltip * {
+  background: transparent;
+  border: none;
+  border-radius: 13px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
+
+tooltip label {
+  color: #cdd6f4;
+  outline: none;
+}
+
+/* ==========================================
+   MODULES STYLING
+   ========================================== */
+
+/* Niri Workspaces */
+
+#workspaces button {
+  background: transparent;
+  margin: 3px;
+  color: #8caaee;
+  border-radius: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button.active {
+  color: #1f1f1f;
+  background-color: #8caaee;
+  padding-left: 18px;
+  padding-right: 15px;
+  margin: 3px;
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+#workspaces button:active,
+#workspaces button:focus {
+  text-shadow: none;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+/* Common padding for all standard modules */
+#workspaces,
+#clock,
+#pulseaudio,
+#disk,
+#memory,
+#cpu,
+#network,
+#power-profiles-daemon,
+#custom-power,
+#battery,
+#custom-logo,
+#bluetooth,
+#backlight,
+#window {
+  padding: 0 8px;
+  margin: 4px 0px;
+  margin-bottom: 0px;
+  margin-left: 3px;
+  /* border-radius: 6px; */
+  background-color: #1f1f1f;
+  border-radius: 14px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border: 2px solid #8caaee;
+}
+
+/* ==========================================
+   SPECIFIC MODULE COLORS
+   ========================================== */
+/* In colors ko aap apne theme ke hisaab se tweak kar sakte hain */
+
+#custom-logo {
+  color: #89b4fa; /* Blueish color for OS logo */
+  font-size: 16px;
+  margin-left: 0px;
+}
+
+#clock {
+  color: #cba6f7; /* Purple for clock */
+}
+
+#pulseaudio,
+#network {
+  color: #fab387; /* Peach for volume */
+}
+
+#pulseaudio.microphone {
+  color: #f38ba8; /* Red/Pink for mic */
+}
+
+#disk {
+  color: #a6e3a1; /* Green for disk */
+}
+
+#window {
+  color: #a6e3a1; /* Green for disk */
+  background: transparent;
+}
+
+#memory {
+  color: #f5c2e7; /* Pink for RAM */
+}
+
+#cpu {
+  color: #94e2d5; /* Teal for CPU */
+}
+
+#power-profiles-daemon {
+  color: #89b4fa; /* Blue for power profile */
+}
+
+#battery {
+  color: #a6e3a1; /* Green for battery */
+}
+
+/* Jab battery low ho to red ho jayega */
+#battery.warning {
+  color: #fab387;
+}
+#battery.critical {
+  color: #f38ba8;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#bluetooth {
+  color: #f38ba8; /* Red for bluetooth button */
+  font-size: 17px;
+}
+
+#custom-power {
+  color: #1b4ef5;
+  font-size: 15px;
+}
+
+#backlight {
+  color: #94e2d5; /* Teal for CPU */
+}
+
+/* Battery blink animation for critical state */
+@keyframes blink {
+  to {
+    background-color: #f38ba8;
+    color: #11111b;
+  }
+}

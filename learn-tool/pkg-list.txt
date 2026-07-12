@@ -14,6 +14,7 @@ chafa   (image rendering in terminal)
 fastfetch   (fetch system information)
 neovim    (cli text editor)
 docker    (for development)
+jolt      (battery monitor tui)
 
 (gui apps)
 ghostty   (terminal emulater)

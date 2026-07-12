@@ -15,20 +15,22 @@ function tmux-start
     tmux new-session -A -s main
 end
 
-if not set -q TMUX; and status is-interactive
-    tmux-start
-end
+# if not set -q TMUX
+#     and status is-interactive
+#     and test "$TERM_PROGRAM" = ghostty
+#
+#     tmux-start
+# end
 
 # -------------------------------------------------
 # default editor
 # -------------------------------------------------
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-set -gx PATH $PATH /opt/nvim-linux-x86_64/bin
+set -gx EDITOR neovide
+set -gx VISUAL neovide
+# set -gx PATH $PATH /opt/nvim-linux-x86_64/bin
 
 # commands that run only when terminal is open otherwise not
 if status is-interactive
-    # Commands to run in interactive sessions can go here
     # chafa -s 20x20 ~/.config/fastfetch/images/01.png
     myfetch
 end

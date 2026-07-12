@@ -30,3 +30,7 @@ workspace switch :
   workspace 4 = ctrl+4
   workspace 5 = ctrl+5
 
+# Mods :
+  Better Find bar
+  Disable Rounded Corner
+  SuperPins

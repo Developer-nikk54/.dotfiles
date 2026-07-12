@@ -8,8 +8,45 @@ fold mode options = z
 change mode options = c
 visual mode options = v
 indent (left/right) = < >
+window mode options = C-w
+mark mode = '
+git = <leader>gg
 
 # commands
+command history = <leader> :
 set nospell/spell = spell check onn/off
 set foldmethod=manual = manual code fold using visual mode keymap:zf/za
 set foldmethod=expr = automatic code fold keymap:za
+
+text manipulation
+------------------------
+select specific part = C- <leader>
+
+scroll
+-------------
+line-by-line = C-e / C-y
+forward/backward (full page) = C-f / C-b
+down/up = C-d / C-u
+
+
+toggle settings
+--------------------
+code formatter (prettier) = <leader>uf
+create fold = zf / za
+
+
+find and searchs
+--------------------
+find file = <leader>ff
+find buffer = <leader>, / <leader>fb
+find project = <leader> p
+
+
+
+plugins specific
+--------------------
+yanky.nvim = {
+  p = paste
+  C-p = next text paste
+  C-n = previouse text paste
+}

@@ -1,0 +1,241 @@
+{
+  // ==========================================
+  // WAYBAR MAIN SETTINGS
+  // ==========================================
+  "layer": "bottom", // Waybar ko dusri windows ke upar rakhega
+  "position": "top", // Screen ke top par place karega
+  "height": 30, // Waybar ki height (Apne hisaab se adjust karein)
+  "spacing": 1, // Modules ke beech ka default space
+  "gtk-layer-shell": true,
+  "passthrough": false,
+  "fixed-center": true,
+  // "margin-top": 4, // Screen ke top se gap (screenshot me gap nahi hai)
+  "margin-bottom": 0,
+  "margin-left": 5,
+  "margin-right": 5,
+  "exclusive": true, // Niri WM me waybar ke niche windows overlap nahi hongi
+  "reload_style_on_change": true,
+
+  // ==========================================
+  // MODULE LAYOUT PLACEMENT
+  // ==========================================
+  // Left side me OS logo aur Niri workspaces
+  "modules-left": ["custom/logo","network", "clock", "niri/window"],
+
+  // Center me Date aur Time
+  "modules-center": ["niri/workspaces"],
+
+  // Right side me system tray aur hardware stats
+  "modules-right": [
+    // "pulseaudio#microphone",
+    "cpu",
+    "memory",
+    "disk",
+    "backlight",
+    "pulseaudio",
+    "battery",
+    "power-profiles-daemon",
+    "bluetooth",
+    "custom/power"
+  ],
+
+  // ==========================================
+  // MODULE CONFIGURATIONS (LEFT)
+  // ==========================================
+
+  // Artix Linux ya Custom Logo
+  "custom/logo": {
+    "format": " ", // Artix ka icon (Nerd Fonts jaruri hai)
+    "on-click": "$HOME/.config/niri/scripts/wallpaper.sh", // Click karne par app launcher khulne ki command
+    "tooltip": false
+  },
+
+  // Niri Window Manager Workspaces
+  "niri/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "active": " ",
+      "default": " "
+    }
+  },
+
+  "niri/window": {
+      "format": " {}",
+      "max-length": 40,
+      "separate-outputs": false,
+      "rewrite": {
+          "(.*) — Zen Browser": "󰖟 Zen",
+          "(.*) - Ghostty": " Ghostty",
+          "(.*) - Neovide": " Neovim",
+          "(.*) - Neovim": " Neovim",
+          "(.*) - FreeTube": "  FreeTube"
+      }
+  },
+
+  // "niri/window": {
+  //   "format": "{title}",
+  //   "max-length":30,
+  //   "rewrite": {
+  //     "(.*) - Mozilla Firefox": "🌎 $1",
+  //     "(.*) - zsh": "> [$1]"
+  //   }
+  // },
+
+  // ==========================================
+  // MODULE CONFIGURATIONS (CENTER)
+  // ==========================================
+
+  // Clock (Exact format as in screenshot: DD/MM/YYYY - HH:MM:SS)
+  // "clock": {
+  //   "interval": 60, // 1 second me update hoga taaki seconds properly dikhein
+  //   "format": "{: %H:%M}",
+  //   "tooltip-format": "<tt><big>{calendar}</big></tt>",
+  //   "calendar": {
+  //     "mode": "month",
+  //     "mode-mon-col": 3,
+  //     "weeks-pos": "right",
+  //     "on-scroll": 1,
+  //     "format": {
+  //       "months": "<span color='#ffead3'><b>{}</b></span>",
+  //       "days": "<span color='#ecc6d9'><b>{}</b></span>",
+  //       "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+  //       "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+  //       "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+  //     }
+  //   },
+  //   "tooltip": false,
+  //   "on-click": "$HOME/.config/waybar/scripts/calendar-toggle.sh"
+  // },
+  "clock": {
+    "interval": 60,
+    "format": "  {:%H:%M}",
+    "max-length": 25,
+    "tooltip-format": " Date: {:%Y-%m-%d}",
+    "tooltip": true
+  },
+
+  // ==========================================
+  // MODULE CONFIGURATIONS (RIGHT)
+  // ==========================================
+
+  // Audio/Volume Speaker
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " Muted",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle", // Click karne par volume mixer khulega
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", " "]
+    },
+    "tooltip":false
+  },
+
+  // Audio/Volume Microphone
+  // "pulseaudio#microphone": {
+  //   "format": "{format_source}",
+  //   "format-source": " {volume}%",
+  //   "format-source-muted": " Muted",
+  //   "on-click": "pavucontrol -t 4",
+  //   "tooltip": false
+  // },
+
+  // Storage/Disk
+  "disk": {
+    "interval": 30,
+    "format": "󰆼 {free}", // Screenshot ki tarah bas percentage
+    "path": "/",
+    "tooltip":false,
+    "on-click": "$HOME/.config/waybar/scripts/disk-toggle.sh"
+
+  },
+
+  // RAM/Memory (Format matched to screenshot: 3.0GB / 3.5GB)
+  "memory": {
+    "interval": 5,
+    "format": " {used:0.1f}GB",
+    "tooltip": false,
+    "tooltip-format": "RAM Usage: {used:0.1f}GB / {total:0.1f}GB ({percentage}%)",
+    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh"
+  },
+
+  // Processor/CPU
+  "cpu": {
+    "interval": 5,
+    "format": " {usage}%",
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh"
+  },
+  "network": {
+    "interface": "wlo1",
+    "format": "{ifname}",
+    "format-wifi": " ",
+    "format-ethernet": "{ifname} ",
+    "format-disconnected": "", //An empty format will hide the module.
+    "format-disconnected": "",
+    "tooltip-format": "{ifname}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50
+  },
+
+  // Power Profiles Daemon (Performance/Balanced/Power-saver)
+  "power-profiles-daemon": {
+    "format": "{icon} ",
+    "tooltip-format": "Performance : {profile}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": ""
+    }
+  },
+
+  // Battery
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-icons": [" ", " ", " ", " ", " "],
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/jolt-toggle.sh"
+  },
+
+  // Custom Power Menu Button
+  "custom/power": {
+    "format": "⏻ ",
+    // "on-click": "$HOME/.config/fuzzel/scripts/powermenu.sh", // Agar aap wlogout use karte hain. Ise apni script se replace kar sakte hain
+    "on-click": "sh -c 'pgrep -x fuzzel >/dev/null && pkill -x fuzzel || \"$HOME/.config/fuzzel/scripts/powermenu.sh\"'",
+    "tooltip": false
+  },
+
+  // Bluetooth
+  "bluetooth": {
+      "format": "",
+      "format-disabled": "󰂲 ",
+      "format-connected": " {device_alias}",
+      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+      "tooltip-format": "{device_alias}\n{device_battery_percentage}",
+      "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
+      "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/bluejay-toggle.sh" // Click karne par app launcher khulne ki command
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
+    "format-icons": [" "]
+  }
+}

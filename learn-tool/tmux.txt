@@ -37,3 +37,47 @@
  useful commands:{
   clear history = clear-history
   }
+
+
+
+
+# old configuraion
+tmux man page = t$ man tmux
+
+prefix key = C-a
+command mode = prefix -> :
+
+tmux window/split-pane/session
+  {
+
+    tmux window :
+
+      new window = $new-window
+      prefix -> c
+      switch window =  prefix -> num
+      close window = t$ exit / C-d
+
+    tmux split-pane :
+      vsplit = prefix " / $split-window
+      hsplit = prefix %
+      focus window = prefix hjkl
+      full screen split = prefix z
+
+    tmux session :
+      new session = $new-session
+      detach session = prefix d
+      attach session = t$ tmux attach
+      switch session = prefix s -> num / Arrow
+      kill all session = t$ tmux kill-server
+      kill specific session = t$ tmux kill-session -t session_name / $kill-session
+      rename session = prefix $ -> "rename"
+  }
+
+copy-mode
+  {
+    copy mode on = prefix [
+    select text = space or V
+    paste text = prefix ]
+    search down = /
+    search up = ?
+  }

@@ -20,3 +20,12 @@ end, { desc = "which_key_ignore" })
 
 -- ctrl+s save/write all files
 vim.keymap.set("n", "<C-s>", "<cmd>wa<cr>", { desc = "Save all files" })
+
+-- keymaps for yanky.nvim plugin
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)")
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)")
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)")
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
+
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")

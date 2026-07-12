@@ -1,0 +1,4 @@
+# yazi shorcuts
+g = goto menu (jump fast in specific dir)
+z = search file (using fzf)
+Z = search direct (using fzf)
