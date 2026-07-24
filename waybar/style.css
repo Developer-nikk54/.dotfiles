@@ -20,7 +20,7 @@
    ========================================== */
 window#waybar {
   /* Background color: Dark purplish tint (screenshot se match kiya hua) */
-  background: transparent;
+  background: none;
   color: #cdd6f4; /* Light pinkish-white text color */
   /* Agar transparent bar chahiye to background-color ko is tarah likhein:
        background-color: rgba(15, 12, 22, 0.85); */
@@ -91,8 +91,10 @@ tooltip label {
 #network,
 #power-profiles-daemon,
 #custom-power,
+#custom-taskbar,
 #battery,
 #custom-logo,
+#custom-notification,
 #bluetooth,
 #backlight,
 #window {
@@ -119,6 +121,10 @@ tooltip label {
   margin-left: 0px;
 }
 
+#custom-notification {
+  color: #f5c2e7; /* Pink for RAM */
+}
+
 #clock {
   color: #cba6f7; /* Purple for clock */
 }
@@ -138,7 +144,7 @@ tooltip label {
 
 #window {
   color: #a6e3a1; /* Green for disk */
-  background: transparent;
+  /* background: transparent; */
 }
 
 #memory {
@@ -182,6 +188,12 @@ tooltip label {
 
 #backlight {
   color: #94e2d5; /* Teal for CPU */
+}
+
+#custom-taskbar {
+  font-size: 16px;
+  padding-left: 20px;
+  padding-right: 7px;
 }
 
 /* Battery blink animation for critical state */

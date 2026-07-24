@@ -5,7 +5,8 @@ choice=$(printf \
 󰖟 Browser\n\
  Yazi\n\
  Tmux\n\
- Neovim" |
+ Notes\n\
+ Neovide" |
   fuzzel --dmenu)
 
 case "$choice" in
@@ -25,8 +26,12 @@ case "$choice" in
   ghostty -e fish -c "tmux-start"
   ;;
 
-" Neovim")
+" Neovide")
   neovide
+  ;;
+
+" Notes")
+  flatpak run "net.cozic.joplin_desktop"
   ;;
 
 esac

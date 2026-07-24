@@ -10,7 +10,7 @@
   "passthrough": false,
   "fixed-center": true,
   // "margin-top": 4, // Screen ke top se gap (screenshot me gap nahi hai)
-  "margin-bottom": 0,
+  "margin-bottom": 1,
   "margin-left": 5,
   "margin-right": 5,
   "exclusive": true, // Niri WM me waybar ke niche windows overlap nahi hongi
@@ -20,10 +20,17 @@
   // MODULE LAYOUT PLACEMENT
   // ==========================================
   // Left side me OS logo aur Niri workspaces
-  "modules-left": ["custom/logo","network", "clock", "niri/window"],
+  "modules-left": [
+    "custom/logo",
+    "niri/workspaces",
+    "network",
+    "clock",
+    "custom/taskbar",
+    "niri/window",
+  ],
 
   // Center me Date aur Time
-  "modules-center": ["niri/workspaces"],
+  "modules-center": [],
 
   // Right side me system tray aur hardware stats
   "modules-right": [
@@ -36,7 +43,8 @@
     "battery",
     "power-profiles-daemon",
     "bluetooth",
-    "custom/power"
+    "custom/notification",
+    "custom/power",
   ],
 
   // ==========================================
@@ -47,7 +55,7 @@
   "custom/logo": {
     "format": " ", // Artix ka icon (Nerd Fonts jaruri hai)
     "on-click": "$HOME/.config/niri/scripts/wallpaper.sh", // Click karne par app launcher khulne ki command
-    "tooltip": false
+    "tooltip": false,
   },
 
   // Niri Window Manager Workspaces
@@ -57,21 +65,21 @@
     "format": "{icon}",
     "format-icons": {
       "active": " ",
-      "default": " "
-    }
+      "default": " ",
+    },
   },
 
   "niri/window": {
-      "format": " {}",
-      "max-length": 40,
-      "separate-outputs": false,
-      "rewrite": {
-          "(.*) — Zen Browser": "󰖟 Zen",
-          "(.*) - Ghostty": " Ghostty",
-          "(.*) - Neovide": " Neovim",
-          "(.*) - Neovim": " Neovim",
-          "(.*) - FreeTube": "  FreeTube"
-      }
+    "format": " {}",
+    "max-length": 40,
+    "separate-outputs": false,
+    "rewrite": {
+      "(.*) — Zen Browser": "󰖟 Zen",
+      "(.*) - Ghostty": " Ghostty",
+      "(.*) - Neovide": " Neovim",
+      "(.*) - Neovim": " Neovim",
+      "(.*) - FreeTube": "  FreeTube",
+    },
   },
 
   // "niri/window": {
@@ -113,7 +121,8 @@
     "format": "  {:%H:%M}",
     "max-length": 25,
     "tooltip-format": " Date: {:%Y-%m-%d}",
-    "tooltip": true
+    "tooltip": true,
+    "on-click": "$HOME/.config/waybar/scripts/calendar-toggle.sh",
   },
 
   // ==========================================
@@ -132,9 +141,9 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", " "]
+      "default": ["", "", " "],
     },
-    "tooltip":false
+    "tooltip": false,
   },
 
   // Audio/Volume Microphone
@@ -151,9 +160,8 @@
     "interval": 30,
     "format": "󰆼 {free}", // Screenshot ki tarah bas percentage
     "path": "/",
-    "tooltip":false,
-    "on-click": "$HOME/.config/waybar/scripts/disk-toggle.sh"
-
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/disk-toggle.sh",
   },
 
   // RAM/Memory (Format matched to screenshot: 3.0GB / 3.5GB)
@@ -162,7 +170,7 @@
     "format": " {used:0.1f}GB",
     "tooltip": false,
     "tooltip-format": "RAM Usage: {used:0.1f}GB / {total:0.1f}GB ({percentage}%)",
-    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh"
+    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh",
   },
 
   // Processor/CPU
@@ -170,7 +178,7 @@
     "interval": 5,
     "format": " {usage}%",
     "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh"
+    "on-click": "$HOME/.config/waybar/scripts/btop-toggle.sh",
   },
   "network": {
     "interface": "wlo1",
@@ -183,7 +191,8 @@
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50
+    "max-length": 50,
+    "on-click": "$HOME/.config/waybar/scripts/nmtui-toggle.sh",
   },
 
   // Power Profiles Daemon (Performance/Balanced/Power-saver)
@@ -195,22 +204,22 @@
       "default": "",
       "performance": "",
       "balanced": "",
-      "power-saver": ""
-    }
+      "power-saver": "",
+    },
   },
 
   // Battery
   "battery": {
     "states": {
       "warning": 30,
-      "critical": 15
+      "critical": 15,
     },
     "format": "{icon} {capacity}%",
     "format-charging": " {capacity}%",
     "format-plugged": " {capacity}%",
     "format-icons": [" ", " ", " ", " ", " "],
     "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/jolt-toggle.sh"
+    "on-click": "$HOME/.config/waybar/scripts/jolt-toggle.sh",
   },
 
   // Custom Power Menu Button
@@ -218,24 +227,51 @@
     "format": "⏻ ",
     // "on-click": "$HOME/.config/fuzzel/scripts/powermenu.sh", // Agar aap wlogout use karte hain. Ise apni script se replace kar sakte hain
     "on-click": "sh -c 'pgrep -x fuzzel >/dev/null && pkill -x fuzzel || \"$HOME/.config/fuzzel/scripts/powermenu.sh\"'",
-    "tooltip": false
+    "tooltip": false,
+  },
+  // notification
+  "custom/notification": {
+    "format": "<span size='14pt'>{icon}</span>",
+    "format-icons": {
+      "notification": "󱅫",
+      "none": "󰂜",
+      "dnd-notification": "󰂠",
+      "dnd-none": "󰪓",
+      "inhibited-notification": "󰂛",
+      "inhibited-none": "󰪑",
+      "dnd-inhibited-notification": "󰂛",
+      "dnd-inhibited-none": "󰪑",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
   },
 
   // Bluetooth
   "bluetooth": {
-      "format": "",
-      "format-disabled": "󰂲 ",
-      "format-connected": " {device_alias}",
-      "format-connected-battery": " {device_alias} {device_battery_percentage}%",
-      "tooltip-format": "{device_alias}\n{device_battery_percentage}",
-      "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
-      "tooltip": false,
-    "on-click": "$HOME/.config/waybar/scripts/bluejay-toggle.sh" // Click karne par app launcher khulne ki command
+    "format": "",
+    "format-disabled": "󰂲",
+    "format-connected": " {device_alias}",
+    "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+    "tooltip-format": "{device_alias}\n{device_battery_percentage}",
+    "tooltip-format-connected": "{controller_alias}\n{controller_address}\n\n{num_connections} connected",
+    "tooltip": false,
+    "on-click": "$HOME/.config/waybar/scripts/bluejay-toggle.sh", // Click karne par app launcher khulne ki command
   },
 
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon} {percent}%",
-    "format-icons": [" "]
-  }
+    "format-icons": [" "],
+  },
+
+  "custom/taskbar": {
+    "exec": "$HOME/.config/waybar/scripts/taskbar-app.sh",
+    "return-type": "json",
+    "interval": 0.1,
+    "on-click": "",
+  },
 }

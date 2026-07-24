@@ -1,5 +1,7 @@
-custom-shader = shaders/cursor_smear.glsl
+
+
 window-decoration = none
+window-show-tab-bar = never
 # theme = Adwaita Dark
 theme = Aizen Dark
 # background-opacity = 0.45
@@ -29,3 +31,14 @@ selection-background = #626881
 cursor-style = bar
 confirm-close-surface = false
 # selection-background = #FF70BF
+
+
+
+# custom-shader = shaders/in-game-crt.glsl
+
+# my fevourite shader
+
+# custom-shader = shaders/cursor_blaze.glsl
+custom-shader = shaders/in-game-crt-cursor.glsl
+custom-shader = shaders/cursor_smear.glsl
+# custom-shader = shaders/tft.glsl

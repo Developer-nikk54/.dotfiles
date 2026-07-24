@@ -3,7 +3,7 @@
 search bar = ctrl+l
 search via google = ctrl+j
 copy url = ctrl+shift+c
-toggle sidebar = alt+s
+toggle sidebar = ctrl+alt+s
 new tab = ctrl+t
 last close tab = ctrl+shift+t
 

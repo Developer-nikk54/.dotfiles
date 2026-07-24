@@ -7,4 +7,4 @@ else
   ghostty -e jolt >/dev/null 2>&1 &
 fi
 # Workspace 1 par switch ho jao
-niri msg action focus-workspace 1
+# niri msg action focus-workspace 1

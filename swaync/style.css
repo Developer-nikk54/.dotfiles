@@ -1,0 +1,689 @@
+/* ==========================================================================
+   1. COLOR PALETTE — Catppuccin Frappé
+   ========================================================================== */
+
+@define-color rosewater #f2d5cf;
+@define-color flamingo  #eebebe;
+@define-color pink      #f4b8e4;
+@define-color mauve     #ca9ee6;
+@define-color red       #e78284;
+@define-color maroon    #ea999c;
+@define-color peach     #ef9f76;
+@define-color yellow    #e5c890;
+@define-color green     #a6d189;
+@define-color teal      #81c8be;
+@define-color sky       #99d1db;
+@define-color sapphire  #85c1dc;
+@define-color blue      #8caaee;
+@define-color lavender  #babbf1;
+
+@define-color text      #c6d0f5;
+@define-color subtext1  #b5bfe2;
+@define-color subtext0  #a5adce;
+
+@define-color overlay2  #949cbb;
+@define-color overlay1  #838ba7;
+@define-color overlay0  #737994;
+
+@define-color surface2  #1f1f1f;
+@define-color surface1  #1f1f1f;
+@define-color surface0  #1f1f1f;
+
+@define-color base      #1f1f1f;
+@define-color mantle    #1f1f1f;
+@define-color crust     #1f1f1f;
+
+/* Semantic aliases used throughout the theme */
+@define-color accent        @mauve;
+@define-color accent-alt    @lavender;
+@define-color danger        @red;
+@define-color warning       @yellow;
+@define-color success       @green;
+@define-color info          @sapphire;
+@define-color shadow-color  rgba(0, 0, 0, 0.45);
+
+/* ==========================================================================
+   2. GLOBAL RESET & BASE STYLES
+   ========================================================================== */
+
+* {
+  font-family: "JetBrainsMono Nerd Font", "JetBrainsMono NF", monospace;
+  font-size: 13px;
+  outline: none;
+  box-shadow: none;
+  -gtk-icon-shadow: none;
+}
+
+/* Root window that hosts floating notifications */
+window#notification-window {
+  background: transparent;
+}
+
+/* Full-screen click-catcher shown behind the control center.
+   Kept fully transparent — no screen-dim effect. */
+.blank-window {
+  background: transparent;
+}
+
+/* ==========================================================================
+   3. FLOATING NOTIFICATION WINDOW
+   ========================================================================== */
+
+.floating-notifications {
+  background: transparent;
+  padding: 8px;
+}
+
+.notification-row {
+  outline: none;
+  margin: 6px 10px;
+  padding: 0;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.notification-row:focus,
+.notification-row:hover {
+  background: transparent;
+}
+
+/* ==========================================================================
+   4. NOTIFICATION CARD
+   ========================================================================== */
+
+.notification {
+  border-radius: 18px;
+  padding: 12px;
+  margin: 2px;
+  background: linear-gradient(
+    155deg,
+    alpha(@surface0, 0.92),
+    alpha(@mantle, 0.92)
+  );
+  border: 1px solid alpha(@surface2, 0.6);
+  box-shadow:
+    0 8px 24px 0 @shadow-color,
+    0 1px 0 0 alpha(@overlay0, 0.15) inset;
+  transition: all 0.25s ease-in-out;
+}
+
+.notification:hover {
+  background: linear-gradient(
+    155deg,
+    alpha(@surface1, 0.95),
+    alpha(@surface0, 0.95)
+  );
+  border: 1px solid alpha(@accent, 0.55);
+}
+
+.notification-content {
+  padding: 4px 6px;
+}
+
+/* ==========================================================================
+   5. NOTIFICATION URGENCY LEVELS
+   ========================================================================== */
+
+/* Low priority — muted, subdued accent */
+.notification.low {
+  border-left: 4px solid @overlay1;
+}
+
+/* Normal priority — default accent */
+.notification.normal {
+  border-left: 4px solid @blue;
+}
+
+/* Critical / urgent — red accent with a gentle attention pulse */
+.notification.critical {
+  border-left: 4px solid @red;
+  border-color: alpha(@red, 0.7);
+  animation: urgent-pulse 2.2s ease-in-out infinite;
+}
+
+.notification.critical .summary {
+  color: @red;
+}
+
+/* ==========================================================================
+   6. NOTIFICATION CONTENT (icon / image / text)
+   ========================================================================== */
+
+.notification-icon {
+  margin-right: 10px;
+}
+
+.notification-icon image,
+.notification-content image {
+  border-radius: 14px;
+}
+
+/* Large body image previews (e.g. screenshots, album art) */
+.image {
+  border-radius: 14px;
+  margin-top: 8px;
+  border: 1px solid alpha(@surface2, 0.5);
+}
+
+.summary {
+  font-weight: 700;
+  font-size: 14px;
+  color: @text;
+  margin-bottom: 2px;
+}
+
+.body {
+  font-weight: 400;
+  font-size: 12.5px;
+  color: @subtext0;
+}
+
+.time {
+  font-size: 11px;
+  font-weight: 500;
+  color: @overlay1;
+  margin-left: 6px;
+}
+
+/* ==========================================================================
+   7. NOTIFICATION ACTIONS & CLOSE BUTTON
+   ========================================================================== */
+
+.notification-action {
+  background: alpha(@surface1, 0.8);
+  color: @text;
+  border: 1px solid alpha(@surface2, 0.6);
+  border-radius: 12px;
+  padding: 6px 10px;
+  margin: 6px 4px 0 0;
+  font-weight: 600;
+  font-size: 12px;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-action:hover {
+  background: alpha(@accent, 0.85);
+  color: @crust;
+  border-color: @accent;
+}
+
+.notification-default-action {
+  border-radius: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-default-action:hover {
+  background: alpha(@overlay0, 0.08);
+}
+
+.close-button {
+  background: alpha(@surface1, 0.85);
+  color: @subtext0;
+  border-radius: 999px;
+  min-width: 22px;
+  min-height: 22px;
+  font-weight: 700;
+  font-size: 11px;
+  margin: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.close-button:hover {
+  background: @red;
+  color: @crust;
+}
+
+/* ==========================================================================
+   8. NOTIFICATION GROUPS
+   ========================================================================== */
+
+.notification-group {
+  border-radius: 18px;
+  margin: 6px 4px;
+  padding: 6px;
+  background: alpha(@mantle, 0.55);
+  border: 1px solid alpha(@surface1, 0.5);
+}
+
+.notification-group-headers {
+  padding: 4px 8px;
+  color: @subtext1;
+  font-weight: 700;
+  font-size: 12.5px;
+}
+
+.notification-group-icon {
+  color: @lavender;
+  margin-right: 6px;
+}
+
+.notification-group-close-all-button {
+  background: alpha(@surface1, 0.8);
+  color: @subtext0;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.notification-group-close-all-button:hover {
+  background: @red;
+  color: @crust;
+}
+
+/* ==========================================================================
+   9. CONTROL CENTER SHELL
+   ========================================================================== */
+
+.control-center {
+  background: linear-gradient(165deg, alpha(@base, 0.94), alpha(@mantle, 0.96));
+  border: 1px solid alpha(@surface1, 0.6);
+  border-radius: 20px;
+  padding: 10px;
+  box-shadow:
+    0 16px 48px 0 @shadow-color,
+    0 1px 0 0 alpha(@overlay0, 0.1) inset;
+}
+
+.control-center-list {
+  background: transparent;
+  padding: 4px;
+}
+
+.control-center-list-placeholder {
+  color: @overlay1;
+  font-size: 13px;
+  font-weight: 500;
+  margin-top: 40px;
+}
+
+.control-center-list-placeholder image {
+  color: @surface2;
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   10. CONTROL CENTER HEADER (title widget)
+   ========================================================================== */
+
+.widget-title {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-radius: 16px;
+  background: alpha(@surface0, 0.6);
+}
+
+.widget-title > label {
+  font-size: 17px;
+  font-weight: 800;
+  color: @text;
+}
+
+.widget-title > button {
+  background: alpha(@accent, 0.18);
+  color: @accent;
+  border: 1px solid alpha(@accent, 0.4);
+  border-radius: 12px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+
+.widget-title > button:hover {
+  background: @accent;
+  color: @crust;
+}
+
+/* ==========================================================================
+   11. LABEL WIDGET (footer / subtitle text)
+   ========================================================================== */
+
+.widget-label {
+  padding: 6px 14px;
+  margin-bottom: 6px;
+}
+
+.widget-label > label {
+  font-size: 12px;
+  font-weight: 600;
+  color: @overlay2;
+  letter-spacing: 0.4px;
+}
+
+/* ==========================================================================
+   12. VOLUME SLIDER WIDGET
+   ==========================================================================
+   Controls the real system output volume via SwayNC's built-in audio
+   backend (PipeWire / PulseAudio). No extra styling hooks are required
+   beyond the standard GTK `scale` element structure.
+   ========================================================================== */
+
+.widget-volume {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-radius: 16px;
+  background: alpha(@surface0, 0.55);
+}
+
+.widget-volume > box {
+  padding: 2px;
+}
+
+.widget-volume label {
+  font-size: 15px;
+  color: @sapphire;
+  margin-right: 10px;
+  min-width: 20px;
+}
+
+.widget-volume scale {
+  min-height: 18px;
+}
+
+.widget-volume scale trough {
+  background: @surface1;
+  border-radius: 999px;
+  min-height: 8px;
+  border: none;
+}
+
+.widget-volume scale highlight {
+  background: linear-gradient(90deg, @sapphire, @sky);
+  border-radius: 999px;
+  min-height: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-volume scale slider {
+  background: @text;
+  border-radius: 999px;
+  min-width: 16px;
+  min-height: 16px;
+  margin: -5px;
+  box-shadow: 0 2px 8px 0 @shadow-color;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-volume scale:hover slider {
+  background: @sapphire;
+  min-width: 20px;
+  min-height: 20px;
+  margin: -7px;
+}
+
+.widget-volume scale:hover trough {
+  min-height: 10px;
+}
+
+.widget-volume scale:hover highlight {
+  min-height: 10px;
+}
+
+/* Per-app volume rows (when "show-per-app" is enabled) */
+.widget-volume .per-app-volume {
+  margin-top: 6px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: alpha(@mantle, 0.5);
+}
+
+.widget-volume .per-app-icon {
+  color: @lavender;
+  margin-right: 8px;
+}
+
+/* ==========================================================================
+   15. BRIGHTNESS SLIDER WIDGET
+   ==========================================================================
+   Controls the real screen brightness via SwayNC's built-in backlight
+   backend (reads/writes the device configured in `widget-config.backlight`,
+   e.g. "intel_backlight" or "amdgpu_bl0"). No extra styling hooks required.
+   ========================================================================== */
+
+.widget-backlight {
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  border-radius: 16px;
+  background: alpha(@surface0, 0.55);
+}
+
+.widget-backlight > box {
+  padding: 2px;
+}
+
+.widget-backlight label {
+  font-size: 15px;
+  color: @yellow;
+  margin-right: 10px;
+  min-width: 20px;
+}
+
+.widget-backlight scale {
+  min-height: 18px;
+}
+
+.widget-backlight scale trough {
+  background: @surface1;
+  border-radius: 999px;
+  min-height: 8px;
+  border: none;
+}
+
+.widget-backlight scale highlight {
+  background: linear-gradient(90deg, @peach, @yellow);
+  border-radius: 999px;
+  min-height: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-backlight scale slider {
+  background: @text;
+  border-radius: 999px;
+  min-width: 16px;
+  min-height: 16px;
+  margin: -5px;
+  box-shadow: 0 2px 8px 0 @shadow-color;
+  transition: all 0.15s ease-in-out;
+}
+
+.widget-backlight scale:hover slider {
+  background: @peach;
+  min-width: 20px;
+  min-height: 20px;
+  margin: -7px;
+}
+
+.widget-backlight scale:hover trough {
+  min-height: 10px;
+}
+
+.widget-backlight scale:hover highlight {
+  min-height: 10px;
+}
+
+/* ==========================================================================
+   16. BUTTONS GRID
+   ==========================================================================
+   Used for quick-toggle tiles: Network, Bluetooth, Battery / Power Profile,
+   Microphone, Input Device, Output Device. Each tile is a `button` inside
+   `widget-buttons-grid`'s flowbox. Optional per-action "class" values (set
+   in config.json) let you recolor individual tiles via the modifier
+   classes below; every tile still looks great without them.
+   ========================================================================== */
+
+.widget-buttons-grid {
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+.widget-buttons-grid > flowbox {
+  background: transparent;
+}
+
+.widget-buttons-grid > flowbox > flowboxchild {
+  padding: 4px;
+}
+
+.widget-buttons-grid button {
+  background: alpha(@surface0, 0.8);
+  color: @text;
+  border: 1px solid alpha(@surface2, 0.5);
+  border-radius: 16px;
+  min-width: 58px;
+  min-height: 58px;
+  font-size: 18px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.widget-buttons-grid button:hover {
+  background: alpha(@surface1, 0.95);
+  border-color: alpha(@accent, 0.6);
+}
+
+.widget-buttons-grid button:active {
+  background: @surface1;
+}
+
+/* Toggled / active state (e.g. Wi-Fi on, Bluetooth connected) */
+.widget-buttons-grid button:checked {
+  background: alpha(@accent, 0.85);
+  color: @crust;
+  border-color: @accent;
+}
+
+/* Optional semantic modifier classes — assign via config.json "class" */
+.widget-buttons-grid button.network {
+  color: @blue;
+}
+
+.widget-buttons-grid button.bluetooth {
+  color: @sapphire;
+}
+
+.widget-buttons-grid button.battery {
+  color: @green;
+}
+
+.widget-buttons-grid button.power-profile {
+  color: @peach;
+}
+
+.widget-buttons-grid button.microphone {
+  color: @red;
+}
+
+.widget-buttons-grid button.input-device {
+  color: @teal;
+}
+
+.widget-buttons-grid button.output-device {
+  color: @lavender;
+}
+
+/* ==========================================================================
+   17. INHIBITOR WIDGET
+   ==========================================================================
+   Toggles idle-inhibit / lock behaviour. Styled to match the buttons grid.
+   ========================================================================== */
+
+.widget-inhibitors {
+  padding: 6px;
+  margin-bottom: 6px;
+}
+
+.widget-inhibitors > button {
+  background: alpha(@surface0, 0.8);
+  color: @text;
+  border: 1px solid alpha(@surface2, 0.5);
+  border-radius: 16px;
+  min-width: 58px;
+  min-height: 58px;
+  font-size: 18px;
+  transition: all 0.2s ease-in-out;
+}
+
+.widget-inhibitors > button:hover {
+  background: alpha(@surface1, 0.95);
+  border-color: alpha(@accent, 0.6);
+}
+
+.widget-inhibitors > button:checked {
+  background: alpha(@mauve, 0.85);
+  color: @crust;
+  border-color: @mauve;
+}
+
+/* ==========================================================================
+   18. SCROLLBAR STYLING
+   ========================================================================== */
+
+scrollbar {
+  background: transparent;
+  border: none;
+  margin: 2px;
+}
+
+scrollbar slider {
+  background: alpha(@overlay0, 0.6);
+  border-radius: 999px;
+  min-width: 0.1px;
+  min-height: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+scrollbar slider:hover {
+  background: @accent;
+}
+
+scrollbar trough {
+  background: transparent;
+  border-radius: 999px;
+}
+
+/* ==========================================================================
+   19. TOOLTIPS
+   ========================================================================== */
+
+tooltip {
+  background: alpha(@mantle, 0.96);
+  border: 1px solid alpha(@surface2, 0.6);
+  border-radius: 12px;
+  padding: 6px 10px;
+  box-shadow: 0 6px 18px 0 @shadow-color;
+}
+
+tooltip label {
+  color: @text;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   20. ANIMATIONS & KEYFRAMES
+   ========================================================================== */
+
+@keyframes urgent-pulse {
+  0% {
+    border-color: alpha(@red, 0.4);
+  }
+  50% {
+    border-color: alpha(@red, 0.95);
+  }
+  100% {
+    border-color: alpha(@red, 0.4);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.notification-row {
+  animation: fade-in 0.2s ease-in-out;
+}
