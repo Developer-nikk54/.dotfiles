@@ -15,4 +15,8 @@ if vim.g.neovide then
   vim.g.neovide_remember_window_size = true
   vim.g.neovide_cursor_vfx_mode = "torpedo"
   vim.g.neovide_padding_top = 5
+  vim.g.neovide_padding_bottom = 0
+  vim.g.neovide_padding_left = 0
+  vim.g.neovide_padding_right = 0
+  vim.g.neovide_show_border = false
 end

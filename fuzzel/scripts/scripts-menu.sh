@@ -2,20 +2,18 @@
 
 choice=$(printf \
   " Terminal\n\
-󰖟 Browser\n\
  Yazi\n\
  Tmux\n\
  Notes\n\
- Neovide" |
+󰑈 FreeTube\n\
+ Neovide\n\
+󰖟 Main Browser\n\
+󰭻 AI Browser" |
   fuzzel --dmenu)
 
 case "$choice" in
 " Terminal")
   ghostty
-  ;;
-
-"󰖟 Browser")
-  flatpak run "app.zen_browser.zen"
   ;;
 
 " Yazi")
@@ -32,6 +30,18 @@ case "$choice" in
 
 " Notes")
   flatpak run "net.cozic.joplin_desktop"
+  ;;
+
+"󰑈 FreeTube")
+  flatpak run "io.freetubeapp.FreeTube"
+  ;;
+
+"󰖟 Main Browser")
+  flatpak run "app.zen_browser.zen" "-P" "Main"
+  ;;
+
+"󰭻 AI Browser")
+  flatpak run "app.zen_browser.zen" "-P" "AI"
   ;;
 
 esac

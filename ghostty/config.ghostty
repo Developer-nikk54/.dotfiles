@@ -3,7 +3,7 @@
 window-decoration = none
 window-show-tab-bar = never
 # theme = Adwaita Dark
-theme = Aizen Dark
+theme = noctalia
 # background-opacity = 0.45
 foreground = #BFC9D1
 font-size = 15

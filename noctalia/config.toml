@@ -1,0 +1,294 @@
+[backdrop]
+blur_intensity = 0.099999997764825821
+enabled = true
+tint_intensity = 0.20000000000000001
+
+[bar.default]
+capsule = true
+capsule_fill = "outline"
+capsule_radius = 17
+capsule_thickness = 0.74999998696148396
+center = [ "group:g1", "ram", "temp", "custom_button_btop", "custom_button_disk" ]
+end = [
+    "tray",
+    "screenshot",
+    "clipboard",
+    "network",
+    "bluetooth",
+    "brightness",
+    "volume",
+    "battery",
+    "power_profile",
+    "nightlight",
+    "notifications",
+    "session"
+]
+font_family = "JetBrainsMono Nerd Font"
+margin_ends = 50
+margin_opposite_edge = 1
+scale = 1.0500000081956387
+start = [ "clock", "workspaces", "taskbar", "active_window" ]
+thickness = 33
+widget_spacing = 7
+
+    [[bar.default.capsule_group]]
+    enabled = true
+    fill = "outline"
+    id = "g1"
+    members = [ "cpu" ]
+    opacity = 1.0
+    padding = 6.0
+    radius = 17.0
+
+[battery]
+warning_threshold = 20
+
+[control_center]
+width = 850
+
+    [control_center.calendar]
+    show_events_card = false
+
+[desktop_widgets]
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000001" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 320.0
+    cx = 1696.0
+    cy = 956.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000001.settings]
+        background_opacity = 1.0
+        center_text = false
+        clock_style = "digital"
+        font_family = "JetBrainsMono Nerd Font"
+
+[dock]
+active_scale = 1.2500000186264515
+auto_hide = false
+enabled = true
+icon_size = 40
+inactive_opacity = 0.74999998323619366
+inactive_scale = 0.90000001341104507
+launcher_position = "start"
+pinned = [ "app.zen_browser.zen", "org.gnome.Nautilus", "com.mitchellh.ghostty", "neovide", "org.gnome.Ptyxis" ]
+reserve_space = false
+smart_auto_hide = true
+
+[hot_corners]
+delay_ms = 1750
+
+[idle]
+behavior_order = [ "lock", "screen-off", "lock-and-suspend" ]
+
+    [idle.behavior.lock]
+    action = "lock"
+    enabled = true
+    timeout = 120.0
+
+    [idle.behavior.lock-and-suspend]
+    action = "lock_and_suspend"
+    enabled = true
+    timeout = 1500.0
+
+    [idle.behavior.screen-off]
+    action = "screen_off"
+    enabled = true
+    timeout = 900.0
+
+[keybinds]
+down = [ "Ctrl+j" ]
+left = [ "Ctrl+h" ]
+right = [ "Ctrl+l" ]
+up = [ "Ctrl+k" ]
+
+[lockscreen]
+blur_intensity = 0.099999997764825821
+tint_intensity = 0.19999999552965164
+
+[lockscreen_widgets]
+enabled = true
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-0000000000000001" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 70.0
+    box_width = 400.0
+    cx = 960.0
+    cy = 953.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = true
+        input_opacity = 1.0
+        input_radius = 6.0
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+
+    [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
+    box_height = 160.0
+    box_width = 320.0
+    cx = 1696.0
+    cy = 956.0
+    output = "eDP-1"
+    rotation = 0.0
+    type = "clock"
+
+        [lockscreen_widgets.widget.lockscreen-widget-0000000000000001.settings]
+        background_opacity = 0.87
+        font_family = "JetBrainsMono Nerd Font"
+
+[nightlight]
+enabled = true
+force = false
+temperature_day = 5100
+temperature_night = 5000
+
+[osd]
+background_opacity = 0.96999997831881046
+
+[plugins]
+enabled = []
+
+[shell]
+avatar_path = "/var/lib/AccountsService/icons/red-vortex"
+font_family = "JetBrainsMono Nerd Font"
+niri_overview_type_to_launch_enabled = true
+
+    [shell.animation]
+    speed = 1.3000000193715096
+
+    [shell.launcher.providers.emoji]
+    global = false
+
+    [shell.panel]
+    control_center_placement = "floating"
+    control_center_position = "center"
+    session_placement = "floating"
+    session_position = "center"
+
+    [shell.screen_corners]
+    size = 1
+
+    [shell.screenshot]
+    directory = "/home/red-vortex/Pictures/Screenshots"
+
+    [[shell.session.actions]]
+    action = "lock"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "1"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "reboot"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "4"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "logout"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "2"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "lock_and_suspend"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "3"
+    variant = "default"
+
+    [[shell.session.actions]]
+    action = "shutdown"
+    countdown_seconds = 0.0
+    enabled = true
+    shortcut = "5"
+    variant = "destructive"
+
+[theme]
+builtin = "Gruvbox"
+community_palette = "Oxocarbon"
+mode = "dark"
+source = "builtin"
+wallpaper_scheme = "m3-content"
+
+    [theme.templates]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "ghostty", "kcolorscheme", "niri", "qt", "scroll" ]
+    community_ids = [
+        "zen-browser",
+        "fuzzel",
+        "rofi",
+        "velo",
+        "vicinae",
+        "walker",
+        "bat",
+        "lazygit",
+        "papirus-icons",
+        "prismlauncher",
+        "yazi",
+        "snappy-switcher"
+    ]
+
+[wallpaper]
+directory = "/home/red-vortex/Pictures/wallpaper"
+transition_on_startup = true
+
+    [wallpaper.default]
+    path = "/home/red-vortex/Pictures/wallpaper/gruvbox_tux.png"
+
+    [wallpaper.last]
+    path = "/home/red-vortex/Pictures/wallpaper/gruvbox_tux.png"
+
+    [wallpaper.monitors.eDP-1]
+    path = "/home/red-vortex/Pictures/wallpaper/gruvbox_tux.png"
+
+[weather]
+enabled = false
+refresh_minutes = 5
+
+[widget.custom_button_btop]
+capsule_radius = "auto"
+font_family = "JetBrainsMono Nerd Font"
+glyph = "heart-rate-monitor"
+scale = 1.25
+tooltip = "btop (system monitor)"
+type = "custom_button"
+
+    [widget.custom_button_btop.actions]
+    left = "exec pgrep -x btop >/dev/null && pkill -x btop || ghostty -e btop"
+
+[widget.custom_button_disk]
+glyph = "database-cog"
+scale = 1.1500000000000001
+tooltip = "disk (monitor)"
+type = "custom_button"
+
+    [widget.custom_button_disk.actions]
+    left = "exec pgrep -x gnome-disks >/dev/null && pkill -x gnome-disks || gnome-disks"
+
+[widget.network]
+show_label = false

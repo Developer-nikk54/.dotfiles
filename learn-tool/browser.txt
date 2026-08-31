@@ -1,5 +1,7 @@
 # zen browser shortcuts, zen-mods, extentions.
 
+# shortcuts :
+add emoji = ctrl+;
 search bar = ctrl+l
 search via google = ctrl+j
 copy url = ctrl+shift+c
@@ -29,6 +31,14 @@ workspace switch :
   workspace 3 = ctrl+3
   workspace 4 = ctrl+4
   workspace 5 = ctrl+5
+
+# command mode, search bar :
+  ctrl+l : open search bar
+  * = search bookmarks
+  ^ = search history 
+  % = search tabs
+  ` = search spaces, workspaces 
+
 
 # Mods :
   Better Find bar

@@ -2,8 +2,6 @@
 // "/-" comments out the following node.
 // Check the wiki for a full description of the configuration:
 // https://niri-wm.github.io/niri/Configuration:-Introduction
-
-// workspace count
 workspace "1"
 workspace "2"
 
@@ -23,7 +21,6 @@ input {
             // If this section is empty, niri will fetch xkb settings
             // from org.freedesktop.locale1. You can control these using
             // localectl set-x11-keymap.
-            // swap escape caps lock
             options "caps:swapescape"
         }
 
@@ -72,16 +69,8 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    // focus-follows-mouse max-scroll-amount="0%"
+    focus-follows-mouse max-scroll-amount="0%"
 }
-
-// Disable the hot corners mouse gesture overview on corner pointer
-gestures {
-    hot-corners {
-        off
-    }
-}
-
 
 // You can configure outputs by their name, which you can find
 // by running `niri msg outputs` while inside a niri instance.
@@ -117,7 +106,11 @@ gestures {
     // so to put another output directly adjacent to it on the right, set its x to 1920.
     // If the position is unset or results in an overlap, the output is instead placed
     // automatically.
-    position x=1280 y=0
+    // position x=1280 y=0
+    position x=0 y=0
+}
+output "eDP-1" {
+    backdrop-color "#1f1f2f"
 }
 
 // Settings that influence how windows are positioned and sized.
@@ -125,7 +118,7 @@ gestures {
 // https://niri-wm.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 6
+    gaps 4
 
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
@@ -134,7 +127,7 @@ layout {
     // - "on-overflow", focusing a column will center it if it doesn't fit
     //   together with the previously focused column.
     center-focused-column "always"
-    // center-focused-column "never"
+    always-center-single-column true
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
     preset-column-widths {
@@ -143,7 +136,7 @@ layout {
         // The default preset widths are 1/3, 1/2 and 2/3 of the output.
         proportion 0.33333
         proportion 0.6
-        proportion 0.95
+        proportion 0.9
 
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
@@ -182,13 +175,15 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#A5AF79"
+        active-color "#7fc8ff"
+        active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklch longer hue"
+        inactive-color "#505050"
+        inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
 
         // Color of the ring on inactive monitors.
         //
         // The focus ring only draws around the active window, so the only place
         // where you can see its inactive-color is on other monitors.
-        inactive-color "#A5AF79"
 
         // You can also use gradients. They take precedence over solid colors.
         // Gradients are rendered the same as CSS linear-gradient(angle, from, to).
@@ -197,27 +192,33 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
         // To do that, set relative-to="workspace-view".
         //
-        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
     }
 
     // You can also add a border. It's similar to the focus ring, but always visible.
     border {
         // The settings are the same as for the focus ring.
         // If you enable the border, you probably want to disable the focus ring.
-        on
+        // off
 
         width 2
-        // active-color "#A5AF79"
-        inactive-color "#505050"
+        // active-color "#ffc87f"
+        // active-color "#7fc8ff"
+        // inactive-color "#505050"
+        active-color "#8caaee"
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklch longer hue"
+        inactive-color "#626880"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+
 
         // Color of the border around windows that request your attention.
-        urgent-color "#9b0000"
+        // urgent-color "#9b0000"
+        // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45 in="oklch longer hue"
 
         // Gradients can use a few different interpolation color spaces.
         // For example, this is a pastel rainbow gradient via in="oklch longer hue".
@@ -225,12 +226,13 @@ layout {
         // active-gradient from="#e5989b" to="#ffb4a2" angle=45 relative-to="workspace-view" in="oklch longer hue"
 
         // inactive-gradient from="#505050" to="#808080" angle=45 relative-to="workspace-view"
+        // radius 12
     }
 
     // You can enable drop shadows for windows.
     shadow {
         // Uncomment the next line to enable shadows.
-        on
+        // on
 
         // By default, the shadow draws only around its window, and not behind it.
         // Uncomment this setting to make the shadow draw behind its window.
@@ -252,13 +254,13 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 10
+        softness 30
 
         // Spread expands the shadow.
-        spread 3
+        spread 5
 
         // Offset moves the shadow relative to the window.
-        offset x=0 y=0
+        offset x=0 y=5
 
         // You can also change the shadow color and opacity.
         color "#0007"
@@ -283,8 +285,15 @@ layout {
 // See the binds section below for more spawn examples.
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
-// spawn-at-startup "waybar"
-spawn-at-startup "noctalia"
+spawn-at-startup "waybar"
+// wallpaper custom
+spawn-at-startup "swaybg" "-i" "/home/red-vortex/Pictures/wallpaper/re8.webp"
+// swaylock 900=15min
+spawn-at-startup "swayidle" "-w" \
+    "timeout" "900" "swaylock" "-f" \
+    "before-sleep" "swaylock" "-f"
+
+spawn-at-startup "swaync" "-c" "/home/red-vortex/.config/swaync/config.json" "-s" "/home/red-vortex/.config/swaync/style.css"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
@@ -292,6 +301,7 @@ spawn-at-startup "noctalia"
 hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     skip-at-startup
+
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
@@ -317,8 +327,10 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 0.7
-    slowdown 0.3
+    // slowdown 1.4
+    // slowdown 0.6
+    slowdown 0.7
+
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -331,16 +343,24 @@ window-rule {
     // This regular expression is intentionally made as specific as possible,
     // since this is the default config, and we want no false positives.
     // You can get away with just app-id="wezterm" if you want.
-    match app-id=r#"^org\.wezfurlong\.wezterm$"#
-    default-column-width {}
+    // match app-id=r#"^org\.wezfurlong\.wezterm$"#
+    // default-column-width {}
+    geometry-corner-radius 5
+    clip-to-geometry true
 }
 
-// // Open the Firefox picture-in-picture player as floating by default.
+// Open the Firefox picture-in-picture player as floating by default.
+window-rule {
+    // This app-id regular expression will work for both:
+    // - host Firefox (app-id is "firefox")
+    // - Flatpak Firefox (app-id is "org.mozilla.firefox")
+    match app-id=r#"zen$"# title="^Picture-in-Picture$"
+    open-floating false
+}
+
+// // open the ghostty in floating
 // window-rule {
-//     // This app-id regular expression will work for both:
-//     // - host Firefox (app-id is "firefox")
-//     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-//     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+//     match app-id="com.mitchellh.ghostty"
 //     open-floating true
 // }
 
@@ -355,53 +375,20 @@ window-rule {
     // Use this instead if you want them visible on third-party screenshot tools.
     // block-out-from "screencast"
 }
-
 // Example: enable rounded corners for all windows.
 // (This example rule is commented out with a "/-" in front.)
 /-window-rule {
-    geometry-corner-radius 12
+    geometry-corner-radius 5
     clip-to-geometry true
 }
-
-// noctalia custom code
-window-rule {
-  // Rounded corners for a modern look.
-  geometry-corner-radius 12
-
-  // Clips window contents to the rounded corner boundaries.
-  clip-to-geometry true
-}
-
-// Floating Noctalia settings window.
-window-rule {
-  match app-id="dev.noctalia.Noctalia"
-  open-floating true
-  default-column-width { fixed 1080; }
-  default-window-height { fixed 920; }
-}
-
-debug {
-  // Allows notification actions and window activation from Noctalia.
-  honor-xdg-activation-with-invalid-serial
-}
-layer-rule {
-  match namespace="^noctalia-backdrop"
-  place-within-backdrop true
+// Disable the hot corners.
+gestures {
+    hot-corners {
+        off
+    }
 }
 
 binds {
-
-    // Noctalia custom binds keybind
-    Mod+Slash { spawn-sh "noctalia msg panel-toggle launcher"; }
-    Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
-    Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
-    Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
-
-    // custom binds
-
-    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
-    Alt+Space hotkey-overlay-title="Open search: scripts" { spawn-sh "/home/red-vortex/.config/fuzzel/scripts/scripts-menu.sh"; }
-
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
     // like wev.
@@ -417,14 +404,19 @@ binds {
     Mod+Shift+Slash { show-hotkey-overlay; }
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    // Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
-    // Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
+    Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    // Mod+B hotkey-overlay-title="Open a Browser: zen" { spawn "flatpak" "run" "app.zen_browser.app"; }
+    Mod+Slash hotkey-overlay-title="Open Application" { spawn "fuzzel"; }
+    Mod+D hotkey-overlay-title="Open search: fuzzel" { spawn-sh "/home/red-vortex/.config/fuzzel/scripts/fuzzel-menu.sh"; }
+    Mod+P hotkey-overlay-title="Open Power Menu" { spawn-sh "/home/red-vortex/.config/fuzzel/scripts/powermenu.sh"; }
+    Alt+Space hotkey-overlay-title="Open search: scripts" { spawn-sh "/home/red-vortex/.config/fuzzel/scripts/scripts-menu.sh"; }
     // Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Mod+T hotkey-overlay-title="Toggle topbar: waybar" { spawn-sh "/home/red-vortex/.config/niri/scripts/launch.sh"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
     // For example, this is a standard bind to toggle the screen reader (orca).
-    // Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
+    Super+Alt+S allow-when-locked=true hotkey-overlay-title=null { spawn-sh "pkill orca || exec orca"; }
 
     // Example volume keys mappings for PipeWire & WirePlumber.
     // The allow-when-locked=true property makes them work even when the session is locked.
@@ -558,8 +550,8 @@ binds {
     // These binds are also affected by touchpad's natural-scroll, so these
     // example binds are "inverted", since we have natural-scroll enabled for
     // touchpads by default.
-    Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
-    Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
+    // Mod+TouchpadScrollDown { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02+"; }
+    // Mod+TouchpadScrollUp   { spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.02-"; }
 
     // You can refer to workspaces by index. However, keep in mind that
     // niri is a dynamic workspace system, so these commands are kind of
@@ -601,9 +593,9 @@ binds {
     Mod+BracketRight { consume-or-expel-window-right; }
 
     // Consume one window from the right to the bottom of the focused column.
-    // Mod+Comma  { consume-window-into-column; }
+    Mod+Comma  { consume-window-into-column; }
     // Expel the bottom window from the focused column to the right.
-    // Mod+Period { expel-window-from-column; }
+    Mod+Period { expel-window-from-column; }
 
     // Cycle through widths set in preset-column-widths.
     Mod+R { switch-preset-column-width; }
@@ -683,7 +675,5 @@ binds {
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
-    Mod+Shift+P { power-off-monitors; }
+    Mod+Shift+P {spawn-sh "/home/red-vortex/.config/niri/scripts/lock.sh";}
 }
-
-include "noctalia.kdl"

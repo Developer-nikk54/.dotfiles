@@ -11,6 +11,8 @@ indent (left/right) = < >
 window mode options = C-w
 mark mode = '
 git = <leader>gg
+restore last session = <leader>qs / <leader>ql
+open floating terminal = C-_  --> toggle terminal C-/   --note: only work in neovide or tmux
 
 # commands
 command history = <leader> :

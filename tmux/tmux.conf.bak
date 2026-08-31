@@ -1,7 +1,6 @@
 # custom default shell
 set-option -g default-shell /usr/bin/fish
 set-option -g default-command /usr/bin/fish
-
 # tmux reload shortcut
 bind r source-file ~/.config/tmux/tmux.conf \; display "Config Reloaded!"
 
@@ -40,57 +39,24 @@ set-option -g history-limit 100000000
 # tmux title/path
 set-option -g set-titles on
 set-option -g set-titles-string "#{pane_title}"
-
 bind c new-window -c "#{pane_current_path}"
 bind '"' split-window -c "#{pane_current_path}" # split horizontally -
 bind '%' split-window -h -c "#{pane_current_path}" # split vertically |
 
 # others options
+# of this features if they are causing problems
 set-option -s focus-events on
 set-option -s extended-keys on
 set-option -s escape-time 0
 
 ######
 # styling
-######
 
-# ---------------------------------------------------------------------------
-# GRUVBOX PALETTE (edit these to change the whole theme later)
-# Reference: https://github.com/morhetz/gruvbox
-# ---------------------------------------------------------------------------
-GRUVBOX_BG0="#282828"      # darkest background
-GRUVBOX_BG1="#3c3836"
-GRUVBOX_BG2="#504945"
-GRUVBOX_BG3="#665c54"
-GRUVBOX_BG4="#7c6f64"
-GRUVBOX_FG0="#fbf1c7"      # lightest foreground
-GRUVBOX_FG1="#ebdbb2"
-GRUVBOX_GRAY="#928374"
-
-GRUVBOX_RED="#cc241d"
-GRUVBOX_GREEN="#98971a"
-GRUVBOX_YELLOW="#d79921"
-GRUVBOX_BLUE="#458588"
-GRUVBOX_PURPLE="#b16286"
-GRUVBOX_AQUA="#689d6a"
-GRUVBOX_ORANGE="#d65d0e"
-
-GRUVBOX_RED_BRIGHT="#fb4934"
-GRUVBOX_GREEN_BRIGHT="#b8bb26"
-GRUVBOX_YELLOW_BRIGHT="#fabd2f"
-GRUVBOX_BLUE_BRIGHT="#83a598"
-GRUVBOX_PURPLE_BRIGHT="#d3869b"
-GRUVBOX_AQUA_BRIGHT="#8ec07c"
-GRUVBOX_ORANGE_BRIGHT="#fe8019"
-
-# ---------------------------------------------------------------------------
-# ACTIVE THEME (change these 3 lines to re-theme the whole status bar)
-# Swap ACCENT to any GRUVBOX_* color above (e.g. GRUVBOX_BLUE, GRUVBOX_AQUA, GRUVBOX_PURPLE...)
-# ---------------------------------------------------------------------------
-ACCENT=${GRUVBOX_GREEN_BRIGHT}
-FG=${GRUVBOX_FG1}
-DARK_GREY=${GRUVBOX_BG2}
-TEXT_COLOR=${GRUVBOX_BG0}
+# color variables
+FG=#c3ccf1
+BLUE=#8caaee
+DARK_GREY=#626881
+TEXT_COLOR=#2f2836
 
 # powerline character unicode variables
 HALF_ROUND_OPEN="#(printf '\uE0B6')"
@@ -98,28 +64,28 @@ HALF_ROUND_CLOSE="#(printf '\uE0B4')"
 TRIANGLE_OPEN="#(printf '\uE0B2')"
 TRIANGLE_CLOSE="#(printf '\uE0B0')"
 
-# tmux status bar
+
+# tmux status bar 
 set-option -g message-style bg=${DARK_GREY},fg=${FG}
 set-option -g message-command-style bg=${DARK_GREY},fg=${FG}
 set-option -g mode-style bg=${DARK_GREY},fg=${FG}
-set-option -g popup-style "bg=${GRUVBOX_BG0}"
+set-option -g popup-style "bg=#1f1f1f"
 set-option -g popup-border-lines rounded
 set-option -g status-position top
 set-option -g status-style bg=${DARK_GREY},fg=${FG}
 set-option -g status-justify centre
-
 set-option -g status-left "\
-#[bg=${ACCENT},fg=${TEXT_COLOR}] #S \
-#[fg=${ACCENT},bg=default]${TRIANGLE_CLOSE} \
-#[fg=${ACCENT},bg=default]${HALF_ROUND_OPEN}\
-#[bg=${ACCENT},fg=${TEXT_COLOR}]  #(basename #{pane_current_path})\
-#[fg=${ACCENT},bg=default]${HALF_ROUND_CLOSE}\
+#[bg=${BLUE},fg=${TEXT_COLOR}] #S \
+#[fg=${BLUE},bg=default]${TRIANGLE_CLOSE} \
+#[fg=${BLUE},bg=default]${HALF_ROUND_OPEN}\
+#[bg=${BLUE},fg=${TEXT_COLOR}]  #(basename #{pane_current_path})\
+#[fg=${BLUE},bg=default]${HALF_ROUND_CLOSE}\
 "
 
 set-option -g status-right "\
-#[fg=${ACCENT},bg=default]${TRIANGLE_OPEN}\
-#[bg=${ACCENT},fg=${TEXT_COLOR}]  #{user}@#H\
-#[bg=${ACCENT},fg=${TEXT_COLOR}]  #(cat /sys/class/power_supply/BAT0/capacity)%\
+#[fg=${BLUE},bg=default]${TRIANGLE_OPEN}\
+#[bg=${BLUE},fg=${TEXT_COLOR}]  #{user}@#H\
+#[bg=${BLUE},fg=${TEXT_COLOR}]  #(cat /sys/class/power_supply/BAT0/capacity)%\
 "
 
 set-option -g status-left-length 100
@@ -127,19 +93,17 @@ set-option -g status-right-length 100
 
 set-option -g window-status-format " #I:#W "
 set-option -g window-status-current-format "\
-#[fg=${ACCENT},bg=default]${HALF_ROUND_OPEN}\
-#[bg=${ACCENT},fg=${TEXT_COLOR}]#I:\
-#[bg=${ACCENT},fg=${TEXT_COLOR}]#W\
-#[fg=${ACCENT},bg=default]${HALF_ROUND_CLOSE}\
+#[fg=${BLUE},bg=default]${HALF_ROUND_OPEN}\
+#[bg=${BLUE},fg=${TEXT_COLOR}]#I:\
+#[bg=${BLUE},fg=${TEXT_COLOR}]#W\
+#[fg=${BLUE},bg=default]${HALF_ROUND_CLOSE}\
 "
-
 # keybindings for tmux
 # split pane focus keybind
 bind-key h select-pane -L
 bind-key j select-pane -D
 bind-key k select-pane -U
 bind-key l select-pane -R
-
 # alt+num switch window
 bind -n M-1 select-window -t :=1
 bind -n M-2 select-window -t :=2
@@ -155,21 +119,21 @@ bind -n M-9 select-window -t :=9
 unbind m
 bind m resize-pane -Z
 
-# ##### Display Popups #####
+
+# ##### Display Popups ##### 
 bind C-p display-popup \
   -d "#{pane_current_path}" \
   -w 90% \
   -h 85% \
   -E "tmux new-session -d -s popup 2>/dev/null; tmux set-option -t popup status off; tmux attach -t popup"
 
-# yazi file manager setting for image preview in yazi
+# yazi file manger setting for image preview in yazi
 set -g allow-passthrough on
 set -ga update-environment TERM
 set -ga update-environment TERM_PROGRAM
 
-# new-session create automatic
+# new-session create automatic 
 bind-key N run-shell "~/.local/bin/tmux-workspace"
-
 # close current active session
 unbind q
 bind-key q run-shell "~/.local/bin/tmux-workspace-kill"
