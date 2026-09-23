@@ -3,42 +3,66 @@ blur_intensity = 0.099999997764825821
 enabled = true
 tint_intensity = 0.20000000000000001
 
-[bar.default]
-capsule = true
-capsule_fill = "outline"
-capsule_radius = 17
-capsule_thickness = 0.74999998696148396
-center = [ "group:g1", "ram", "temp", "custom_button_btop", "custom_button_disk" ]
-end = [
-    "tray",
-    "screenshot",
-    "clipboard",
-    "network",
-    "bluetooth",
-    "brightness",
-    "volume",
-    "battery",
-    "power_profile",
-    "nightlight",
-    "notifications",
-    "session"
-]
-font_family = "JetBrainsMono Nerd Font"
-margin_ends = 50
-margin_opposite_edge = 1
-scale = 1.0500000081956387
-start = [ "clock", "workspaces", "taskbar", "active_window" ]
-thickness = 33
-widget_spacing = 7
+[bar]
+order = [ "default", "App-Bar-right" ]
 
-    [[bar.default.capsule_group]]
+    [bar.App-Bar-right]
+    capsule = true
+    capsule_fill = "outline"
+    capsule_foreground = "on_surface"
+    capsule_opacity = 0.0
+    capsule_padding = 2.0
+    capsule_radius = 50
+    capsule_thickness = 0.99999998137354851
+    center = [ "brave", "zen_AI", "ferdium", "github_desktop", "boxes", "vlc_player" ]
     enabled = true
-    fill = "outline"
-    id = "g1"
-    members = [ "cpu" ]
-    opacity = 1.0
-    padding = 6.0
-    radius = 17.0
+    end = [ "active_window", "wallpaper" ]
+    font_family = "JetBrainsMono Nerd Font Mono"
+    margin_ends = 160
+    padding = 13
+    position = "right"
+    radius = 45
+    scale = 2.3500000275671482
+    smart_auto_hide = true
+    start = [ "theme_mode", "audio_visualizer" ]
+    thickness = 50
+
+    [bar.default]
+    capsule = true
+    capsule_fill = "outline"
+    capsule_radius = 17
+    capsule_thickness = 0.74999998696148396
+    center = [ "group:g1", "ram", "temp", "custom_button_btop", "custom_button_disk" ]
+    end = [
+        "tray",
+        "screenshot",
+        "clipboard",
+        "network",
+        "bluetooth",
+        "brightness",
+        "volume",
+        "battery",
+        "power_profile",
+        "nightlight",
+        "notifications",
+        "session"
+    ]
+    font_family = "JetBrainsMono Nerd Font"
+    margin_ends = 50
+    margin_opposite_edge = 1
+    scale = 1.0500000081956387
+    start = [ "caffeine", "clock", "workspaces", "taskbar", "active_window" ]
+    thickness = 33
+    widget_spacing = 7
+
+        [[bar.default.capsule_group]]
+        enabled = true
+        fill = "outline"
+        id = "g1"
+        members = [ "cpu" ]
+        opacity = 1.0
+        padding = 6.0
+        radius = 17.0
 
 [battery]
 warning_threshold = 20
@@ -50,13 +74,14 @@ width = 850
     show_events_card = false
 
 [desktop_widgets]
+enabled = false
 schema_version = 2
-widget_order = [ "desktop-widget-0000000000000001" ]
+widget_order = []
 
     [desktop_widgets.grid]
     cell_size = 16
     major_interval = 4
-    visible = true
+    visible = false
 
     [desktop_widgets.widget.desktop-widget-0000000000000001]
     box_height = 160.0
@@ -81,8 +106,9 @@ icon_size = 40
 inactive_opacity = 0.74999998323619366
 inactive_scale = 0.90000001341104507
 launcher_position = "start"
-pinned = [ "app.zen_browser.zen", "org.gnome.Nautilus", "com.mitchellh.ghostty", "neovide", "org.gnome.Ptyxis" ]
+pinned = [ "app.zen_browser.zen", "org.localsend.localsend_app", "org.gnome.Nautilus", "com.mitchellh.ghostty", "neovide" ]
 reserve_space = false
+show_dots = true
 smart_auto_hide = true
 
 [hot_corners]
@@ -127,11 +153,13 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     visible = true
 
     [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
-    box_height = 70.0
-    box_width = 400.0
+    box_height = 196.0
+    box_width = 720.0
     cx = 960.0
     cy = 953.0
     output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "login_box"
 
@@ -142,9 +170,14 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
         center_password_text = true
         input_opacity = 1.0
         input_radius = 6.0
+        layout = "regular"
         show_caps_lock = true
         show_keyboard_layout = true
         show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
 
     [lockscreen_widgets.widget.lockscreen-widget-0000000000000001]
     box_height = 160.0
@@ -152,6 +185,8 @@ widget_order = [ "lockscreen-login-box@eDP-1", "lockscreen-widget-00000000000000
     cx = 1696.0
     cy = 956.0
     output = "eDP-1"
+    placement_height = 1080.0
+    placement_width = 1920.0
     rotation = 0.0
     type = "clock"
 
@@ -172,6 +207,7 @@ background_opacity = 0.96999997831881046
 enabled = []
 
 [shell]
+app_icon_color = "error"
 avatar_path = "/var/lib/AccountsService/icons/red-vortex"
 font_family = "JetBrainsMono Nerd Font"
 niri_overview_type_to_launch_enabled = true
@@ -240,17 +276,17 @@ wallpaper_scheme = "m3-content"
     builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "ghostty", "kcolorscheme", "niri", "qt", "scroll" ]
     community_ids = [
         "zen-browser",
+        "prismlauncher",
         "fuzzel",
         "rofi",
         "velo",
         "vicinae",
         "walker",
+        "papirus-icons",
+        "snappy-switcher",
         "bat",
         "lazygit",
-        "papirus-icons",
-        "prismlauncher",
-        "yazi",
-        "snappy-switcher"
+        "yazi"
     ]
 
 [wallpaper]
@@ -266,9 +302,30 @@ transition_on_startup = true
     [wallpaper.monitors.eDP-1]
     path = "/home/red-vortex/Pictures/wallpaper/gruvbox_tux.png"
 
+    [[wallpaper.favorite]]
+    builtin_palette = "Gruvbox"
+    palette_source = "builtin"
+    path = "/home/red-vortex/Pictures/wallpaper/gruvbox_tux.png"
+    theme_mode = "dark"
+
 [weather]
 enabled = false
 refresh_minutes = 5
+
+[widget.boxes]
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/gnome-boxes.svg"
+tooltip = "boxes"
+type = "custom_button"
+
+    [widget.boxes.actions]
+    left = "exec gnome-boxes"
+
+[widget.brave]
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/brave-browser.svg"
+type = "custom_button"
+
+    [widget.brave.actions]
+    left = "exec flatpak run com.brave.Browser"
 
 [widget.custom_button_btop]
 capsule_radius = "auto"
@@ -290,5 +347,47 @@ type = "custom_button"
     [widget.custom_button_disk.actions]
     left = "exec pgrep -x gnome-disks >/dev/null && pkill -x gnome-disks || gnome-disks"
 
+[widget.ferdium]
+color = "#34FB41"
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/ferdium.svg"
+glyph = "user-hexagon"
+tooltip = "ferdium"
+type = "custom_button"
+
+    [widget.ferdium.actions]
+    left = "exec flatpak run org.ferdium.Ferdium"
+
+[widget.github_desktop]
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/github-desktop.svg"
+type = "custom_button"
+
+    [widget.github_desktop.actions]
+    left = "exec flatpak run io.github.shiftey.Desktop"
+
 [widget.network]
 show_label = false
+
+[widget.theme_mode]
+interactive = false
+scale = 0.5
+
+[widget.vlc_player]
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/vlc.svg"
+tooltip = "vlc"
+type = "custom_button"
+
+    [widget.vlc_player.actions]
+    left = "exec vlc"
+
+[widget.wallpaper]
+scale = 0.5
+
+[widget.zen_AI]
+color = "#EA4015"
+custom_image = "/home/red-vortex/.dotfiles/noctalia/app-bar/icons/apps/scalable/zen-twilight.svg"
+glyph = "hexagon-letter-z-filled"
+tooltip = "zen AI"
+type = "custom_button"
+
+    [widget.zen_AI.actions]
+    left = "exec flatpak run app.zen_browser.zen -P AI"
