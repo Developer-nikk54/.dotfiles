@@ -34,7 +34,7 @@ workspace switch :
 
 # command mode, search bar :
   ctrl+l : open search bar
-  * = search bookmarks
+  * = search bookmarks webs
   ^ = search history 
   % = search tabs
   ` = search spaces, workspaces 

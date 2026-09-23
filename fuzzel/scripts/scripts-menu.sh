@@ -8,7 +8,8 @@ choice=$(printf \
 󰑈 FreeTube\n\
  Neovide\n\
 󰖟 Main Browser\n\
-󰭻 AI Browser" |
+󰭻 AI Browser\n\
+󰅻 Accounts" |
   fuzzel --dmenu)
 
 case "$choice" in
@@ -42,6 +43,10 @@ case "$choice" in
 
 "󰭻 AI Browser")
   flatpak run "app.zen_browser.zen" "-P" "AI"
+  ;;
+
+"󰅻 Accounts")
+  flatpak run "org.ferdium.Ferdium"
   ;;
 
 esac

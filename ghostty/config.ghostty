@@ -1,7 +1,6 @@
 
 
 window-decoration = none
-window-show-tab-bar = never
 # theme = Adwaita Dark
 theme = noctalia
 # background-opacity = 0.45
@@ -16,9 +15,11 @@ font-thicken-strength = 0
 font-feature = liga, calt, kern
 adjust-cell-height = 5%
 bell-features = no-audio
-window-inherit-working-directory = true
 tab-inherit-working-directory = true
 split-inherit-working-directory = true
+split-divider-color = #b8bb26
+window-inherit-working-directory = true
+window-show-tab-bar = never
 window-padding-y = 0
 window-padding-x = 15
 window-height = 33
@@ -27,12 +28,20 @@ window-padding-color = extend
 title = "Ghostty - Ghostty"
 shell-integration-features = cursor
 cursor-color = #d4d4d4
-selection-background = #626881
 cursor-style = bar
+mouse-hide-while-typing = true
+selection-background = #626881
 confirm-close-surface = false
 # selection-background = #FF70BF
 
-
+# ------------------ keybinds ------------------
+keybind = ctrl+shift+;=toggle_tab_overview
+keybind = ctrl+shift+|=new_split:right
+keybind = ctrl+shift+-=new_split:down
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:down
+keybind = ctrl+shift+k=goto_split:up
+keybind = ctrl+shift+l=goto_split:right
 
 # custom-shader = shaders/in-game-crt.glsl
 

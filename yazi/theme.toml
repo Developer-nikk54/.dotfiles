@@ -1,3 +1,34 @@
 [flavor]
 dark = "noctalia"
 light = "noctalia"
+
+# : Icons {{{
+
+
+[icon]
+globs = []
+dirs  = [
+	{ name = ".config", text = "",fg = "#b8bb26" },
+	{ name = ".git", text = "", fg = "#b8bb26" },
+	{ name = ".github", text = "",fg = "#b8bb26" },
+	{ name = ".npm", text = "",fg = "#b8bb26" },
+	{ name = "Desktop", text = "",fg = "#b8bb26" },
+	{ name = "Development", text = "",fg = "#b8bb26" },
+	{ name = "Documents", text = "",fg = "#b8bb26" },
+	{ name = "Downloads", text = "",fg = "#b8bb26" },
+	{ name = "Library", text = "",fg = "#b8bb26" },
+	{ name = "Movies", text = "",fg = "#b8bb26" },
+	{ name = "Music", text = "",fg = "#b8bb26" },
+	{ name = "Pictures", text = "",fg = "#b8bb26" },
+	{ name = "Public", text = "",fg = "#b8bb26" },
+	{ name = "Videos", text = "",fg = "#b8bb26" },
+	{ name = "Projects", text = "󰲋 ",fg = "#b8bb26" },
+	{ name = "Linux", text = "",fg = "#b8bb26" },
+	{ name = "Bin", text = "",fg = "#b8bb26" },
+	{ name = "Notes", text = "󱞁",fg = "#b8bb26" },
+	{ name = "Personal", text = "󰉐",fg = "#b8bb26" },
+	{ name = "Clone", text = "",fg = "#b8bb26" },
+
+]
+
+
