@@ -29,3 +29,8 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)")
 
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)")
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)")
+
+-- Split down
+vim.keymap.set("n", "<leader>_", "<cmd>split<cr>", { desc = "Split Down" })
+-- Split right
+vim.keymap.set("n", "<leader>|", "<cmd>vsplit<cr>", { desc = "Split Right" })

@@ -14,6 +14,11 @@ git = <leader>gg
 restore last session = <leader>qs / <leader>ql
 open floating terminal = C-_  --> toggle terminal C-/   --note: only work in neovide or tmux
 
+
+# split keybinds
+split-down = <leader>_
+split-right = <leader>|
+
 # commands
 command history = <leader> :
 paste yank text in command mode using registers = C-r -> +

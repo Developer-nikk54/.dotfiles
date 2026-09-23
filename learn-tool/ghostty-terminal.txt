@@ -1,0 +1,4 @@
+# ------------------ keybinds ------------------
+toggle_tab_overview = ctrl+shift+;
+split_right = ctrl+shift+-
+split_down = ctrl+shift+|
