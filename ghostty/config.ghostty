@@ -22,6 +22,7 @@ window-inherit-working-directory = true
 window-show-tab-bar = never
 window-padding-y = 0
 window-padding-x = 15
+window-padding-balance = true
 window-height = 33
 window-width = 131
 window-padding-color = extend
@@ -51,3 +52,9 @@ keybind = ctrl+shift+l=goto_split:right
 custom-shader = shaders/in-game-crt-cursor.glsl
 custom-shader = shaders/cursor_smear.glsl
 # custom-shader = shaders/tft.glsl
+
+# custom code
+quick-terminal-position = center
+quick-terminal-size = 45%,45%
+quick-terminal-autohide = true
+keybind = global:ctrl+shift+space=toggle_quick_terminal

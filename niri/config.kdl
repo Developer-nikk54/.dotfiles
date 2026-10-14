@@ -51,7 +51,7 @@ input {
     mouse {
         // off
         // natural-scroll
-        accel-speed 0.3
+        accel-speed 0.35
         // accel-profile "flat"
         // scroll-method "no-scroll"
     }
@@ -323,6 +323,11 @@ animations {
     workspace-switch {
             off
         }
+
+    // horizontal window switch movement speed animation match for same as the workpace switch animation
+    horizontal-view-movement {
+            off
+        }
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -337,6 +342,15 @@ window-rule {
     // You can get away with just app-id="wezterm" if you want.
     match app-id=r#"^org\.wezfurlong\.wezterm$"#
     default-column-width {}
+}
+
+// ghostty floating terminal open
+window-rule {
+    match title="QuickGhostty"
+    open-floating true
+    default-floating-position x=25 y=277 relative-to="bottom"
+    default-column-width { fixed 750; }
+    default-window-height { fixed 550; }
 }
 
 // // Open the Firefox picture-in-picture player as floating by default.
@@ -393,10 +407,11 @@ layer-rule {
   place-within-backdrop true
 }
 
+// shortcuts and keybinds. Find more information on the niri official website:
 binds {
 
     // Noctalia custom binds keybind
-    Mod+Slash { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
     Mod+S { spawn-sh "noctalia msg panel-toggle control-center"; }
     Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
     Alt+Tab { spawn-sh "noctalia msg window-switcher"; }
@@ -404,6 +419,7 @@ binds {
     // custom binds
 
     Mod+Return hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
+    Mod+Shift+Return { spawn "/home/red-vortex/.local/bin/ghostty-float"; }
     Alt+Space hotkey-overlay-title="Open search: scripts" { spawn-sh "/home/red-vortex/.config/fuzzel/scripts/scripts-menu.sh"; }
 
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -691,3 +707,6 @@ binds {
 }
 
 include "noctalia.kdl"
+
+// Managed by the Noctalia cursor plugin - edits here are overwritten.
+include "cursor.kdl"

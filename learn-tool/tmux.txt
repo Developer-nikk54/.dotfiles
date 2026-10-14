@@ -44,7 +44,7 @@
 # old configuraion
 tmux man page = t$ man tmux
 
-prefix key = C-a
+prefix key = C-g
 command mode = prefix -> :
 
 tmux window/split-pane/session
