@@ -1,3 +1,25 @@
 create symlink
 
 ln -s ~/.dotfiles/nvim ~/.config/nvim
+------------------------------------------------------
+all folder and there symlink location:
+
+1. ~/.dotfiles/bash -> ~/.config/bash
+2. ~/.dotfiles/bin -> ~/.local/bin
+3. ~/.dotfiles/btop -> ~/.config/btop
+4. ~/.dotfiles/fastfetch -> ~/.config/fastfetch
+5. ~/.dotfiles/fish -> ~/.config/fish
+6. ~/.dotfiles/fonts -> ~/.local/share/fonts
+7. ~/.dotfiles/fuzzel -> ~/.config/fuzzel
+8. ~/.dotfiles/ghostty -> ~/.config/ghostty
+9. ~/.dotfiles/lazygit -> ~/.config/lazygit
+10. ~/.dotfiles/niri -> ~/.config/niri
+11. ~/.dotfiles/noctalia -> ~/.config/noctalia
+12. ~/.dotfiles/nvim -> ~/.config/nvim
+13. ~/.dotfiles/tmux -> ~/.config/tmux
+14. ~/.dotfiles/yazi -> ~/.config/yazi
+15. ~/.dotfiles/zellij -> ~/.config/zellij
+16. ~/.dotfiles/starship.toml -> ~/.config/starship.toml
+
+# this is a noctalia shell plugin directory.
+17. ~/.dotfiles/noctalia_1/ -> ~/.local/share/noctalia

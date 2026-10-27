@@ -1,0 +1,37 @@
+# Shortcut Center - a searchable, read-only keyboard shortcut reference popup.
+#
+# Open it with:   noctalia msg panel-toggle custom/shortcut-center:panel
+# (optional)      noctalia msg panel-open   custom/shortcut-center:panel Zellij
+#                 ^ the trailing word preselects a category tab.
+
+id          = "custom/shortcut-center"
+name        = "Shortcut Center"
+version     = "1.0.0"
+description = "A searchable reference of keyboard shortcuts for Niri, Zellij, Neovim, VS Code and more."
+author      = "custom"
+license     = "MIT"
+icon        = "keyboard"
+tags        = ["utility", "panel"]
+dependencies = []
+
+# plugin_api = 10 is the lowest level that has everything this plugin uses:
+#   9  - Luau closures as ui callbacks (onClick = function() ... end)
+#   10 - the `keyboard_focus` panel option
+# Noctalia v5.2.1 accepts plugin_api 3..32 (src/scripting/plugin_api.h), so 10 is
+# compatible; do NOT use 33 - that level is unreleased in v5.2.1.
+plugin_api  = 10
+
+[[panel]]
+id    = "panel"
+entry = "panel.luau"
+
+# Host-owned size (there is no runtime setSize). Fixed pixel sizes are clamped to
+# the output, so on a small screen the panel shrinks instead of overflowing.
+width  = 760
+height = 700
+
+placement = "floating"
+position  = "center"
+
+# Take the keyboard as soon as the panel opens so you can type a search at once.
+keyboard_focus = "exclusive"

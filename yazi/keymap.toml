@@ -378,3 +378,21 @@ keymap = [
 	# Filtering
 	{ on = "f", run = "filter", desc = "Filter help items" },
 ]
+
+
+# custom keybinds shortcut
+[[mgr.prepend_keymap]]
+on = ["<C-b>", "p"]
+run = 'shell -- zellij action new-pane --cwd "$PWD"'
+desc = "Open new Zellij pane in current directory"
+
+[[mgr.prepend_keymap]]
+on = ["<C-b>", "t"]
+run = 'shell -- zellij action new-tab --cwd "$PWD"'
+desc = "Open new Zellij tab in current directory"
+
+[[mgr.prepend_keymap]]
+on = ["<C-b>", "e"]
+run = 'shell -- zellij run --floating --width 95% --height 95% -- nvim "$PWD/$@"'
+desc = "Open selected file in Neovim"
+

@@ -1,3 +1,4 @@
+// keybinds shortcuts
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
@@ -185,9 +186,10 @@ keybinds clear-defaults=true {
     shared_except "locked" "session" {
         bind "Ctrl o" { SwitchToMode "session"; }
     }
-    shared_except "locked" "scroll" "search" "tmux" {
-        bind "Ctrl b" { SwitchToMode "tmux"; }
-    }
+    // isme ham tmux ki trah keybind bna skte hai
+    // shared_except "locked" "scroll" "search" "tmux" {
+    //     bind "Ctrl b" { SwitchToMode "tmux"; }
+    // }
     shared_except "locked" "scroll" "search" {
         bind "Ctrl s" { SwitchToMode "scroll"; }
     }
@@ -202,11 +204,11 @@ keybinds clear-defaults=true {
     }
     // zellij_forgot plugin keybind
     shared_except "locked" {
-        bind "Ctrl y" {
+        bind "Ctrl Y" {
             LaunchOrFocusPlugin "file:~/.config/zellij/plugins/zellij_forgot.wasm" {
                 "LOAD_ZELLIJ_BINDINGS" "false"
 
-                ".....see keybinds....." "Ctrl+y"
+                ".....see keybinds....." "Ctrl+Shift+y"
                 "00 - lock/unlock" "Ctrl+g"
                 "01 - pane mode" "Ctrl+p"
                 "02 - tab mode" "Ctrl+t"
@@ -322,6 +324,25 @@ keybinds clear-defaults=true {
         bind "p" { GoToPreviousTab; SwitchToMode "normal"; }
         bind "z" { ToggleFocusFullscreen; SwitchToMode "normal"; }
     }
+    // custom keybinds shortcuts
+    // shared_except "locked" {
+    //     bind "Ctrl Alt f" {
+    //         LaunchOrFocusPlugin "zellij:strider" {
+    //             floating true
+    //         }
+    //     }
+    // }
+
+    shared_except "locked" {
+        bind "Ctrl y" {
+            Run "yazi" {
+                floating true
+                close_on_exit true
+                width "70%"
+                height "80%"
+            }
+        }
+    }
 }
 
 // Plugin aliases - can be used to change the implementation of Zellij
@@ -331,7 +352,7 @@ plugins {
     compact-bar location="zellij:compact-bar"
     configuration location="zellij:configuration"
     filepicker location="zellij:strider" {
-        cwd "/"
+        cwd "/home/red-vortex"
     }
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
