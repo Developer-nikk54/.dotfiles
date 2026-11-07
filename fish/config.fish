@@ -25,12 +25,12 @@ end
 # -------------------------------------------------
 # default editor
 # -------------------------------------------------
-set -gx EDITOR neovide
-set -gx VISUAL neovide
+set -gx EDITOR nvim
+set -gx VISUAL nvim
 # set -gx PATH $PATH /opt/nvim-linux-x86_64/bin
 
 # commands that run only when terminal is open otherwise not
-if status is-interactive
-    # chafa -s 20x20 ~/.config/fastfetch/images/01.png
-    myfetch
-end
+
+# try command make new projects
+# fish (~/.config/fish/config.fish)
+eval (try init ~/src/tries | string collect)

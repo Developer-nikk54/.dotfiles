@@ -1,11 +1,8 @@
-
-
 window-decoration = none
-# theme = Adwaita Dark
-theme = noctalia
+theme = Nord
 # background-opacity = 0.45
 foreground = #BFC9D1
-font-size = 15
+font-size = 12
 # font-family = FiraCode Nerd Font
 font-family = JetBrains Mono Nerd Font
 # font-style = semibold
